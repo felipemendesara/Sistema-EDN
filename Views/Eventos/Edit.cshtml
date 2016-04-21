@@ -1,0 +1,108 @@
+@model EDNEVENTOS.Models.Eventos
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Eventos</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="BairroEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BairroEvento" class="form-control" />
+                <span asp-validation-for="BairroEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CepEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CepEvento" class="form-control" />
+                <span asp-validation-for="CepEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CidadeEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CidadeEvento" class="form-control" />
+                <span asp-validation-for="CidadeEvento" class="text-danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="DataEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DataEvento" class="form-control" />
+                <span asp-validation-for="DataEvento" class="text-danger" />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="EstadoEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EstadoEvento" class="form-control" />
+                <span asp-validation-for="EstadoEvento" class="text-danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="ImagemProduto" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ImagemProduto" class="form-control" />
+                <span asp-validation-for="ImagemProduto" class="text-danger" />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="LocalEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LocalEvento" class="form-control" />
+                <span asp-validation-for="LocalEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NomeEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NomeEvento" class="form-control" />
+                <span asp-validation-for="NomeEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NumeroLocalEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NumeroLocalEvento" class="form-control" />
+                <span asp-validation-for="NumeroLocalEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Status" />
+                    <label asp-for="Status"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ValorEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ValorEvento" class="form-control" />
+                <span asp-validation-for="ValorEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

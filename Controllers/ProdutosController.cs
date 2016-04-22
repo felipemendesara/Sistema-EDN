@@ -3,6 +3,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using EDNEVENTOS.Models;
+using Microsoft.AspNet.Authorization;
 
 namespace EDNEVENTOS.Controllers
 {
@@ -14,13 +15,13 @@ namespace EDNEVENTOS.Controllers
         {
             _context = context;    
         }
-
+        [Authorize]
         // GET: Produtos
         public IActionResult Index()
         {
             return View(_context.Produtos.ToList());
         }
-
+        [Authorize]
         // GET: Produtos/Details/5
         public IActionResult Details(int? id)
         {
@@ -37,7 +38,7 @@ namespace EDNEVENTOS.Controllers
 
             return View(produtos);
         }
-
+        [Authorize]
         // GET: Produtos/Create
         public IActionResult Create()
         {
@@ -57,7 +58,7 @@ namespace EDNEVENTOS.Controllers
             }
             return View(produtos);
         }
-
+        [Authorize]
         // GET: Produtos/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -87,7 +88,7 @@ namespace EDNEVENTOS.Controllers
             }
             return View(produtos);
         }
-
+        [Authorize]
         // GET: Produtos/Delete/5
         [ActionName("Delete")]
         public IActionResult Delete(int? id)

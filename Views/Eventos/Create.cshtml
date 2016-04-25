@@ -4,77 +4,77 @@
     ViewData["Title"] = "Criar Evento";
 }
 
-<h2>Evento</h2>
+
 
 <form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Novo Evento</h4>
-        <hr />
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <div class="form-group">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="NomeEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NomeEvento" class="form-control" />
+                <input asp-for="NomeEvento" class="mdl-textfield__input" type="text" />
                 <span asp-validation-for="NomeEvento" class="text-danger" />
             </div>
-        </div>
-        <div class="form-group">
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="CepEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CepEvento" class="form-control" />
+                <input asp-for="CepEvento" class="mdl-textfield__input" type="number" />
                 <span asp-validation-for="CepEvento" class="text-danger" />
             </div>
         </div>
-    
-        <div class="form-group">
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="LocalEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="LocalEvento" class="form-control" />
+                <input asp-for="LocalEvento" class="mdl-textfield__input" type="text" />
                 <span asp-validation-for="LocalEvento" class="text-danger" />
             </div>
-        </div>
-        <div class="form-group">
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="CidadeEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="CidadeEvento" class="form-control" />
+                <input asp-for="CidadeEvento" class="mdl-textfield__input" type="text" />
                 <span asp-validation-for="CidadeEvento" class="text-danger" />
             </div>
-        </div>
-        <div class="form-group">
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="BairroEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="BairroEvento" class="form-control" />
+                <input asp-for="BairroEvento" class="mdl-textfield__input" type="text" />
                 <span asp-validation-for="BairroEvento" class="text-danger" />
             </div>
-        </div>
-        <div class="form-group">
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="EstadoEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="EstadoEvento" class="form-control" />
+                <input asp-for="EstadoEvento" class="mdl-textfield__input" type="text" />
                 <span asp-validation-for="EstadoEvento" class="text-danger" />
             </div>
         </div>
-  
-        <div class="form-group">
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="NumeroLocalEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NumeroLocalEvento" class="form-control" />
+                <input asp-for="NumeroLocalEvento" class="mdl-textfield__input" type="number" />
                 <span asp-validation-for="NumeroLocalEvento" class="text-danger" />
             </div>
         </div>
-
-        <div class="form-group">
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label asp-for="ValorEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ValorEvento" class="form-control" />
+                <input asp-for="ValorEvento" class="mdl-textfield__input" type="number" />
                 <span asp-validation-for="ValorEvento" class="text-danger" />
             </div>
-        </div>
-        <div class="form-group">
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Criar" class="btn btn-success" />
             </div>
         </div>
+        <br />
     </div>
 </form>
 
@@ -82,8 +82,4 @@
     <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>
 
-@section Scripts {
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
+

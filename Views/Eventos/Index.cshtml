@@ -4,12 +4,8 @@
     ViewData["Title"] = "Eventos";
 }
 
-<h2>Eventos</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">Novo Evento</a>
-</p>
-<table class="table table-striped">
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NomeEvento)
@@ -82,10 +78,15 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEvento" class="btn btn-primary">Editar</a> 
-                <a asp-action="Details" asp-route-id="@item.IdEvento" class="btn btn-warning">Detalhar</a> 
-                <a asp-action="Delete" asp-route-id="@item.IdEvento" class="btn btn-danger">Excluir</a>
+                <a asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdEvento">Detalhar</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdEvento">Excluir</a>
             </td>
         </tr>
     }
 </table>
+<br />
+<p>
+    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-513px"><i class="material-icons" style="color:aliceblue">add</i></a>
+</p>
+

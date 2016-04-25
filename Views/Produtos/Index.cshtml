@@ -4,19 +4,14 @@
     ViewData["Title"] = "Produtos";
 }
 
-<h2>Produtos</h2>
-
-<p>
-    <a asp-action="Create" class="btn btn-success">Novo Produto</a>
-</p>
-<table class="table table-striped">
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CategoriaProduto)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.ImagemProduto)
-        </th>*@
+                @Html.DisplayNameFor(model => model.ImagemProduto)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.NomeProduto)
         </th>
@@ -28,29 +23,34 @@
         </th>
         <th></th>
     </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoriaProduto)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ImagemProduto)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeProduto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuantidadeProduto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorProduto)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar</a> 
-            <a asp-action="Details" asp-route-id="@item.IdProduto"class="btn btn-warning">Detalhar</a>
-            <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Delete</a>
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoriaProduto)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ImagemProduto)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorProduto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar </a>|
+                <a asp-action="Details" asp-route-id="@item.IdProduto" class="btn btn-warning">Detalhar</a>|
+                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
 </table>
+<br />
+<p>
+    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-513px"><i class="material-icons" style="color:aliceblue">add</i></a>
+</p>

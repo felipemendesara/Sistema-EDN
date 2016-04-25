@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/jquery.js" />
+/// <reference path="js/materialize.js" />
 /// <reference path="js/morris.min.js" />
 /// <reference path="js/morris-data.js" />
 /// <reference path="js/raphael.min.js" />

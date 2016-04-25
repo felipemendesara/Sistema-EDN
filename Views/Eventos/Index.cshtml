@@ -1,92 +1,91 @@
 @model IEnumerable<EDNEVENTOS.Models.Eventos>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Eventos";
 }
 
-<h2>Index</h2>
+<h2>Eventos</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Novo Evento</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BairroEvento)
+            @Html.DisplayNameFor(model => model.NomeEvento)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.CepEvento)
+            @Html.DisplayNameFor(model => model.LocalEvento)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.CidadeEvento)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.DataEvento)
-        </th>*@
+                @Html.DisplayNameFor(model => model.DataEvento)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.EstadoEvento)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.ImagemProduto)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.LocalEvento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeEvento)
-        </th>
+                @Html.DisplayNameFor(model => model.ImagemProduto)
+            </th>*@
+
+
         <th>
             @Html.DisplayNameFor(model => model.NumeroLocalEvento)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+      
         <th>
             @Html.DisplayNameFor(model => model.ValorEvento)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
         <th></th>
     </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BairroEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CepEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CidadeEvento)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.DataEvento)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.EstadoEvento)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ImagemProduto)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.LocalEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumeroLocalEvento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorEvento)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.IdEvento">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.IdEvento">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.IdEvento">Delete</a>
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalEvento)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CidadeEvento)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DataEvento)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoEvento)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ImagemProduto)
+                </td>*@
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroLocalEvento)
+            </td>
+       
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEvento" class="btn btn-primary">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdEvento" class="btn btn-warning">Detalhar</a> 
+                <a asp-action="Delete" asp-route-id="@item.IdEvento" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+    }
 </table>

@@ -1,21 +1,21 @@
 @model EDNEVENTOS.Models.Eventos
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar Evento";
 }
 
-<h2>Create</h2>
+<h2>Evento</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Eventos</h4>
+        <h4>Novo Evento</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="BairroEvento" class="col-md-2 control-label"></label>
+            <label asp-for="NomeEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="BairroEvento" class="form-control" />
-                <span asp-validation-for="BairroEvento" class="text-danger" />
+                <input asp-for="NomeEvento" class="form-control" />
+                <span asp-validation-for="NomeEvento" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -25,34 +25,7 @@
                 <span asp-validation-for="CepEvento" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="CidadeEvento" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="CidadeEvento" class="form-control" />
-                <span asp-validation-for="CidadeEvento" class="text-danger" />
-            </div>
-        </div>
-        @*<div class="form-group">
-            <label asp-for="DataEvento" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="DataEvento" class="form-control" />
-                <span asp-validation-for="DataEvento" class="text-danger" />
-            </div>
-        </div>*@
-        <div class="form-group">
-            <label asp-for="EstadoEvento" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="EstadoEvento" class="form-control" />
-                <span asp-validation-for="EstadoEvento" class="text-danger" />
-            </div>
-        </div>
-        @*<div class="form-group">
-            <label asp-for="ImagemProduto" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ImagemProduto" class="form-control" />
-                <span asp-validation-for="ImagemProduto" class="text-danger" />
-            </div>
-        </div>*@
+    
         <div class="form-group">
             <label asp-for="LocalEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -61,12 +34,27 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NomeEvento" class="col-md-2 control-label"></label>
+            <label asp-for="CidadeEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NomeEvento" class="form-control" />
-                <span asp-validation-for="NomeEvento" class="text-danger" />
+                <input asp-for="CidadeEvento" class="form-control" />
+                <span asp-validation-for="CidadeEvento" class="text-danger" />
             </div>
         </div>
+        <div class="form-group">
+            <label asp-for="BairroEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BairroEvento" class="form-control" />
+                <span asp-validation-for="BairroEvento" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EstadoEvento" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EstadoEvento" class="form-control" />
+                <span asp-validation-for="EstadoEvento" class="text-danger" />
+            </div>
+        </div>
+  
         <div class="form-group">
             <label asp-for="NumeroLocalEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -74,14 +62,7 @@
                 <span asp-validation-for="NumeroLocalEvento" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="Status" />
-                    <label asp-for="Status"></label>
-                </div>
-            </div>
-        </div>
+
         <div class="form-group">
             <label asp-for="ValorEvento" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -91,14 +72,14 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-success" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>
 
 @section Scripts {

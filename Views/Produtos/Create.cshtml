@@ -1,17 +1,25 @@
 @model EDNEVENTOS.Models.Produtos
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar Produto";
 }
 
-<h2>Create</h2>
+<h2>Produtos</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Produtos</h4>
-        <hr />
+        <h4>Novo Produto</h4>
+        <hr/>
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="form-group">
+            <label asp-for="NomeProduto" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NomeProduto" class="form-control" />
+                <span asp-validation-for="NomeProduto" class="text-danger" />
+            </div>
+        </div>
+
+         <div class="form-group">
             <label asp-for="CategoriaProduto" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="CategoriaProduto" class="form-control" />
@@ -25,13 +33,7 @@
                 <span asp-validation-for="ImagemProduto" class="text-danger" />
             </div>
         </div>*@
-        <div class="form-group">
-            <label asp-for="NomeProduto" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="NomeProduto" class="form-control" />
-                <span asp-validation-for="NomeProduto" class="text-danger" />
-            </div>
-        </div>
+
         <div class="form-group">
             <label asp-for="QuantidadeProduto" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -48,14 +50,14 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-success" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"class="btn btn-primary">Voltar</a>
 </div>
 
 @section Scripts {

@@ -1,15 +1,15 @@
 @model IEnumerable<EDNEVENTOS.Models.Produtos>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Produtos";
 }
 
-<h2>Index</h2>
+<h2>Produtos</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Novo Produto</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CategoriaProduto)
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.ValorProduto)
         </td>
         <td>
-            <a asp-action="Edit" asp-route-id="@item.IdProduto">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.IdProduto">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.IdProduto">Delete</a>
+            <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar</a> 
+            <a asp-action="Details" asp-route-id="@item.IdProduto"class="btn btn-warning">Detalhar</a>
+            <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Delete</a>
         </td>
     </tr>
 }

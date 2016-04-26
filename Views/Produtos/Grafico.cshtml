@@ -1,4 +1,4 @@
-@model EDNEVENTOS.Models.Produtos
+@model IEnumerable<EDNEVENTOS.Models.Produtos>
 
 @{
     ViewData["Title"] = "Detalhes dos Produtos";
@@ -24,9 +24,13 @@
         var concas = "'"
         var data = google.visualization.arrayToDataTable([
           ['Itens', 'Quantidade'],
-          ['Coca cola', 20],
-          ['Guarana', 60],
-          ['Sneaker', 50],
+         @foreach (var item in Model)
+         {
+          <text>
+          ['@item.NomeProduto',@item.QuantidadeProduto],
+          </text>
+         }
+
         ]);
 
         var options = {

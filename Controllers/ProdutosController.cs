@@ -118,10 +118,10 @@ namespace EDNEVENTOS.Controllers
             return RedirectToAction("Index");
         }
         [Authorize]
-        // GET: Produtos/Details/5
+        // GET: Produtos/Grafico/5
         public IActionResult Grafico()
         {
-            return View();
+            return View(_context.Produtos.ToList());
         }
     }
 }

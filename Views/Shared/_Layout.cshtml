@@ -68,11 +68,13 @@
                         <i class="material-icons" role="presentation">arrow_drop_down</i>
                         <span class="visuallyhidden">Opções</span>
                     </button>
-                    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
-                        <li>
-                            <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
-                        </li>
-                         </form>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                        <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+                            <li>
+                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Log off</button>
+                            </li>
+                        </form></ul>
+              
 </div>
             </header>
             <nav class="mdl-navigation" id="menu">

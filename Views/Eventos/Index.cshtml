@@ -37,9 +37,7 @@
             @Html.DisplayNameFor(model => model.ValorEvento)
         </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -74,9 +72,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ValorEvento)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+          
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.IdEvento">Detalhar</a> |
@@ -87,6 +83,6 @@
 </table>
 <br />
 <p>
-    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-513px"><i class="material-icons" style="color:aliceblue">add</i></a>
+    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-457px"><i class="material-icons" style="color:aliceblue">add</i></a>
 </p>
 

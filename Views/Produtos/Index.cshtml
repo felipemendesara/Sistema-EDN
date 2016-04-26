@@ -45,12 +45,13 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar </a>|
                 <a asp-action="Details" asp-route-id="@item.IdProduto" class="btn btn-warning">Detalhar</a>|
-                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Delete</a>|
+                <a asp-action="Grafico" asp-route-id="@item.IdProduto" class="btn btn-danger">Grafico</a>
             </td>
         </tr>
     }
 </table>
 <br />
 <p>
-    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-513px"><i class="material-icons" style="color:aliceblue">add</i></a>
+    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-457px"><i class="material-icons" style="color:aliceblue">add</i></a>
 </p>

@@ -1,0 +1,48 @@
+@model EDNEVENTOS.Models.Produtos
+
+@{
+    ViewData["Title"] = "Detalhes dos Produtos";
+}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script> <!-- JS para os graficos-->
+<script type="text/javascript"
+        src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script><!--JS GRAFICO-->
+<script type="text/javascript">
+    google.load("visualization", "1.1", { packages: ["bar"] });
+    google.setOnLoadCallback(drawChartA);
+
+    function drawChartA() {
+        var concas = "'"
+        var data = google.visualization.arrayToDataTable([
+          ['Itens', 'Quantidade'],
+          ['Coca cola', 20],
+          ['Guarana', 60],
+          ['Sneaker', 50],
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Quantidade de produtos',
+                subtitle: '',
+            }
+        };
+
+        var chartA = new google.charts.Bar(document.getElementById('eventoA'));
+        chartA.draw(data, options);
+    }
+</script>
+
+
+<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="padding:30px;">
+    <h3>PRODUTOS</h3>
+    <div id="eventoA" style="width: 900px; height: 500px;"></div>
+</div>

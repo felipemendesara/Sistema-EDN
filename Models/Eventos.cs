@@ -21,15 +21,15 @@ namespace EDNEVENTOS.Models
         [Required]
         [Display(Name = "Estado")]
         public string EstadoEvento { get; set; }
-        //[Required]
-        //[Display(Name = "Data do Evento")]
-        //public DateTime DataEvento { get; set; }
+        [Required]
+        [Display(Name = "Data do Evento")]
+        public DateTime DataEvento { get; set; }
         [Required]
         [Display(Name = "CEP")]
         public int CepEvento { get; set; }
-        //[Required]
-        //[Display(Name = "Imagem")]
-        //public byte[] ImagemProduto { get; set; }
+        [Required]
+        [Display(Name = "Imagem")]
+        public byte[] ImagemProduto { get; set; }
         [Required]
         [Display(Name = "Status do Evento")]
         public bool Status { get; set; }

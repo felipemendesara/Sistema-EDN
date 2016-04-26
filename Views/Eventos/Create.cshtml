@@ -7,66 +7,80 @@
 
 
 <form asp-action="Create">
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:364px">
 
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="NomeEvento" class="col-md-2 control-label"></label>
+            
             <div class="col-md-10">
-                <input asp-for="NomeEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="NomeEvento" class="mdl-textfield__input" type="text" placeholder="Nome do Evento" style="width:385px; padding:20px 47px;"/>
                 <span asp-validation-for="NomeEvento" class="text-danger" />
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="CepEvento" class="col-md-2 control-label"></label>
+      
             <div class="col-md-10">
-                <input asp-for="CepEvento" class="mdl-textfield__input" type="number" />
+                <input asp-for="CepEvento" class="mdl-textfield__input" type="number" placeholder="CEP"style="width:385px; padding:20px 47px;" />
                 <span asp-validation-for="CepEvento" class="text-danger" />
             </div>
         </div>
         <br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="LocalEvento" class="col-md-2 control-label"></label>
+    
             <div class="col-md-10">
-                <input asp-for="LocalEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="LocalEvento" class="mdl-textfield__input" type="text" placeholder="Local do Evento"style="width:385px; padding:20px 47px;" />
                 <span asp-validation-for="LocalEvento" class="text-danger" />
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="CidadeEvento" class="col-md-2 control-label"></label>
+      
             <div class="col-md-10">
-                <input asp-for="CidadeEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="CidadeEvento" class="mdl-textfield__input" type="text" placeholder="Cidade"style="width:385px; padding:20px 47px;" />
                 <span asp-validation-for="CidadeEvento" class="text-danger" />
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="BairroEvento" class="col-md-2 control-label"></label>
+       
             <div class="col-md-10">
-                <input asp-for="BairroEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="BairroEvento" class="mdl-textfield__input" type="text" placeholder="Bairro"style="width:385px; padding:20px 47px;" />
                 <span asp-validation-for="BairroEvento" class="text-danger" />
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="EstadoEvento" class="col-md-2 control-label"></label>
+            
             <div class="col-md-10">
-                <input asp-for="EstadoEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="EstadoEvento" class="mdl-textfield__input" type="text" placeholder="Estado"style="width:385px; padding:20px 47px;"/>
                 <span asp-validation-for="EstadoEvento" class="text-danger" />
             </div>
         </div>
         <br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="NumeroLocalEvento" class="col-md-2 control-label"></label>
+      
             <div class="col-md-10">
-                <input asp-for="NumeroLocalEvento" class="mdl-textfield__input" type="number" />
+                <input asp-for="NumeroLocalEvento" class="mdl-textfield__input" type="number" placeholder="Numero"style="width:385px; padding:20px 47px;"/>
                 <span asp-validation-for="NumeroLocalEvento" class="text-danger" />
             </div>
         </div>
         <br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <label asp-for="ValorEvento" class="col-md-2 control-label"></label>
+        
             <div class="col-md-10">
-                <input asp-for="ValorEvento" class="mdl-textfield__input" type="number" />
+                <input asp-for="ValorEvento" class="mdl-textfield__input" type="number" placeholder="Valor"style="width:385px; padding:20px 47px;" />
                 <span asp-validation-for="ValorEvento" class="text-danger" />
+            </div>
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+            <div class="col-md-10">
+                <input asp-for="ImagemProduto" class="mdl-textfield__input" type="file" placeholder="Valor" style="width:385px; padding:20px 47px;" />
+                <span asp-validation-for="ImagemProduto" class="text-danger" />
+            </div>
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+            <div class="col-md-10">
+                <input asp-for="DataEvento" class="mdl-textfield__input" type="datetime" placeholder="Data" style="width:385px; padding:20px 47px;" />
+                <span asp-validation-for="DataEvento" class="text-danger" />
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

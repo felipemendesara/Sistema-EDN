@@ -4,15 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
+using EDNEVENTOS.Models;
 
 namespace EDNEVENTOS.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Eventos.ToList());
+       
         }
         [Authorize]
         public IActionResult About()

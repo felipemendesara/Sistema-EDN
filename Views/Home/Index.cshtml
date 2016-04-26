@@ -1,5 +1,35 @@
-﻿@{
+﻿@model IEnumerable<EDNEVENTOS.Models.Eventos>
+@{
     ViewData["Title"] = "Home Page";
 }
 
+@foreach (var item in Model)
+{
 
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta">
+    
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">
+         @Html.DisplayFor(modelItem => item.NomeEvento)
+        </h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <b>Cliente:</b>@Html.DisplayFor(modelItem => item.NomeEvento)
+        <br>
+  
+         
+        <b>Data:</b> 25/04/2016 <b>Horário:</b> 22:00
+      </div>
+    
+
+ <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1" href="detalhe-evento.php?id=<?=$id?>">
+                DETALHAR E EDITAR
+              </a>
+                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1" href="http://edneventos.com.br/"target="_blank">
+                 VER EVENTO
+              </a>
+            </div>
+    </div>
+}

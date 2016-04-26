@@ -117,5 +117,11 @@ namespace EDNEVENTOS.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize]
+        // GET: Produtos/Details/5
+        public IActionResult Grafico()
+        {
+            return View();
+        }
     }
 }

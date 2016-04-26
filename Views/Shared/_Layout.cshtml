@@ -31,6 +31,11 @@
         <link rel="stylesheet" href="~/css/material.min.css">
         <link rel="stylesheet" href="~/css/edneventos.css">
 
+        <script src="~/js/material.js"></script>
+        <script src="~/js/material.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+        <script src="~/js/cep.js"></script>
 
 
 
@@ -54,28 +59,31 @@
         <!-- Menu Lateral -->
         <div class="mdl-layout__drawer">
             <header class="drawer-user-area">
-                <img src="<?=$userfoto_url?>" class="user-avatar">
-                <h6 class="mdl-typography--title user-name">felipe</h6>
+                <img src="~/images/login.jpg" class="user-avatar">
+                <h6 class="mdl-typography--title user-name">Felipe Mendes</h6>
                 <div class="demo-avatar-dropdown">
-                    <span>felipemendesara@gmail.com></span>
+                    <span>@User.Identity.Name</span>
                     <div class="mdl-layout-spacer"></div>
                     <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">arrow_drop_down</i>
                         <span class="visuallyhidden">Opções</span>
                     </button>
-                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                        <a style="text-decoration:none;" href="logout.php"><li class="mdl-menu__item"><i class="material-icons">exit_to_app</i> Logout</li></a>
-                    </ul>
-                </div>
+                    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+                        <li>
+                            <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                        </li>
+                         </form>
+</div>
             </header>
-
-
             <nav class="mdl-navigation" id="menu">
 
                 <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">home</i>Inicio</a>
                 <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i>Eventos</a>
                 <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i>Produtos</a>
-
+                <a asp-controller="Produtos" asp-action="Grafico" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">equalizer</i>Grafico/Produtos</a>
+                @if (User.IsInRole("Admin")) { 
+                <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">equalizer</i>Grafico/Produtos</a>
+                }
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item">Some Action</li>

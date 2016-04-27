@@ -39,8 +39,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.QuantidadeProduto)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorProduto)
+            <td  style="color:green">
+               R$ @Html.DisplayFor(modelItem => item.ValorProduto)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar </a>|

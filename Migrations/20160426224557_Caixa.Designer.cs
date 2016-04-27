@@ -8,9 +8,10 @@ using EDNEVENTOS.Models;
 namespace EDNEVENTOS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160426224557_Caixa")]
+    partial class Caixa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -119,8 +120,6 @@ namespace EDNEVENTOS.Migrations
                     b.Property<int>("IdProduto")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CaixaEventosIdCaixa");
-
                     b.Property<string>("CategoriaProduto")
                         .IsRequired();
 
@@ -220,10 +219,6 @@ namespace EDNEVENTOS.Migrations
 
             modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>
                 {
-                    b.HasOne("EDNEVENTOS.Models.CaixaEventos")
-                        .WithMany()
-                        .HasForeignKey("CaixaEventosIdCaixa");
-
                     b.HasOne("EDNEVENTOS.Models.Eventos")
                         .WithMany()
                         .HasForeignKey("EventosIdEvento");

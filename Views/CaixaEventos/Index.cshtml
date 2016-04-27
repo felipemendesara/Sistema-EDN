@@ -1,0 +1,47 @@
+@model IEnumerable<EDNEVENTOS.Models.CaixaEventos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="background:#25BB2B;">ABRIR CAIXA</a>
+</p>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CaixaInicial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caixa)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.StatusCaixa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="color:green">
+                R$  @Html.DisplayFor(modelItem => item.CaixaInicial)
+            </td>
+            <td style="color:green">
+
+                R$ @Html.DisplayFor(modelItem => item.Caixa)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusCaixa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCaixa">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCaixa">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCaixa">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -71,7 +71,7 @@
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                         <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
                             <li>
-                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Log off</button>
+                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="font-size: 19px;width: 124px;background:#B83C2F">Sair</button>
                             </li>
                         </form></ul>
               
@@ -83,6 +83,7 @@
                 <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i>Eventos</a>
                 <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i>Produtos</a>
                 <a asp-controller="Produtos" asp-action="Grafico" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">equalizer</i>Grafico/Produtos</a>
+                <a asp-controller="CaixaEventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">attach_money</i>Caixa</a>
                 @if (User.IsInRole("Admin")) { 
                 <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">equalizer</i>Grafico/Produtos</a>
                 }

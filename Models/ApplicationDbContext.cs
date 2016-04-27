@@ -19,5 +19,6 @@ namespace EDNEVENTOS.Models
         }
         public DbSet<Produtos> Produtos { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
+        public DbSet<CaixaEventos> CaixaEventos { get; set; }
     }
 }

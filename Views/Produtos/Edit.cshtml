@@ -4,47 +4,46 @@
     ViewData["Title"] = "Editar Produtos";
 }
 
-<h2>Produtos</h2>
-
 <form asp-action="Edit">
-    <div class="form-horizontal">
-        <h4>Editar Produto</h4>
-        <hr />
-        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="NomeProduto" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="NomeProduto" class="form-control" />
-                <span asp-validation-for="NomeProduto" class="text-danger" />
-            </div>
+
+    <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+    <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input asp-for="NomeProduto" class="mdl-textfield__input" type="text" />
+            <label class="mdl-textfield__label" for="sample1">Nome do Produto</label>
+            <span asp-validation-for="NomeProduto" class="text-danger" />
         </div>
-        <div class="form-group">
-            <label asp-for="CategoriaProduto" class="col-md-2 control-label"></label>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-10">
-                <input asp-for="CategoriaProduto" class="form-control" />
+                <input asp-for="CategoriaProduto" class="mdl-textfield__input" type="text" />
+                <label class="mdl-textfield__label" for="sample1">Categoria do Produto</label>
                 <span asp-validation-for="CategoriaProduto" class="text-danger" />
             </div>
-        </div>
+        </div><br />
         @*<div class="form-group">
-            <label asp-for="ImagemProduto" class="col-md-2 control-label"></label>
+                <label asp-for="ImagemProduto" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ImagemProduto" class="form-control" />
+                    <span asp-validation-for="ImagemProduto" class="text-danger" />
+                </div>
+            </div>*@
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
             <div class="col-md-10">
-                <input asp-for="ImagemProduto" class="form-control" />
-                <span asp-validation-for="ImagemProduto" class="text-danger" />
-            </div>
-        </div>*@
-   
-        <div class="form-group">
-            <label asp-for="QuantidadeProduto" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="QuantidadeProduto" class="form-control" />
-                <span asp-validation-for="QuantidadeProduto" class="text-danger" />
+                <input asp-for="QuantidadeProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <label class="mdl-textfield__label" for="sample2">Quantidade de Produto</label>
+                <span asp-validation-for="QuantidadeProduto" class="mdl-textfield__error">Apenas numeros!</span>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="ValorProduto" class="col-md-2 control-label"></label>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
             <div class="col-md-10">
-                <input asp-for="ValorProduto" class="form-control" />
-                <span asp-validation-for="ValorProduto" class="text-danger" />
+                <input asp-for="ValorProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <label class="mdl-textfield__label" for="sample2">Valor do Produto</label>
+                <span asp-validation-for="ValorProduto" class="mdl-textfield__error">Apenas numeros!</span>
             </div>
         </div>
         <div class="form-group">
@@ -59,8 +58,3 @@
     <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>
 
-@section Scripts {
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}

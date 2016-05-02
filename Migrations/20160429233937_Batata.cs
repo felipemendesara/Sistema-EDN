@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity.Migrations;
+using Microsoft.Data.Entity.Metadata;
 
-namespace EDNEVENTOS.Migrations
+namespace SistemaEDN.Migrations
 {
-    public partial class Initialxs : Migration
+    public partial class Batata : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,16 +14,32 @@ namespace EDNEVENTOS.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DataEvento",
-                table: "Eventos",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-            migrationBuilder.AddColumn<byte[]>(
-                name: "ImagemProduto",
-                table: "Eventos",
-                nullable: false,
-                defaultValue: new byte[] {  });
+            migrationBuilder.CreateTable(
+                name: "ProdutoEmEvento",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EventoIdEvento = table.Column<int>(nullable: true),
+                    ProdutoIdProduto = table.Column<int>(nullable: true),
+                    Quantidade = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProdutoEmEvento", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProdutoEmEvento_Eventos_EventoIdEvento",
+                        column: x => x.EventoIdEvento,
+                        principalTable: "Eventos",
+                        principalColumn: "IdEvento",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProdutoEmEvento_Produtos_ProdutoIdProduto",
+                        column: x => x.ProdutoIdProduto,
+                        principalTable: "Produtos",
+                        principalColumn: "IdProduto",
+                        onDelete: ReferentialAction.Restrict);
+                });
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",
@@ -67,8 +84,7 @@ namespace EDNEVENTOS.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.DropColumn(name: "DataEvento", table: "Eventos");
-            migrationBuilder.DropColumn(name: "ImagemProduto", table: "Eventos");
+            migrationBuilder.DropTable("ProdutoEmEvento");
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",

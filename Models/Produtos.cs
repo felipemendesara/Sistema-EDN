@@ -28,6 +28,5 @@ namespace EDNEVENTOS.Models
         [Display(Name = "Nome do Produto")]
         public string NomeProduto { get; set; }
 
-        public virtual Eventos Eventos { get; set; }
     }
 }

@@ -23,6 +23,27 @@ namespace EDNEVENTOS.Controllers
             return View(_context.Eventos.ToList());
         }
         [Authorize]
+        [HttpGet]
+        public IActionResult Maps(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            return View(eventos);
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Maps(Eventos eventos)
+        {
+            return View(eventos);
+        }
+        [Authorize]
         // GET: Eventos/Details/5
         public IActionResult Details(int? id)
         {
@@ -43,6 +64,7 @@ namespace EDNEVENTOS.Controllers
         // GET: Eventos/Create
         public IActionResult Create()
         {
+           
             return View();
         }
 

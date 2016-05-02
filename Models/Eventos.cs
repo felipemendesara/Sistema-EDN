@@ -29,7 +29,7 @@ namespace EDNEVENTOS.Models
         public int CepEvento { get; set; }
         [Required]
         [Display(Name = "Imagem")]
-        public byte[] ImagemProduto { get; set; }
+        public string ImagemProduto { get; set; }
         [Required]
         [Display(Name = "Status do Evento")]
         public bool Status { get; set; }
@@ -45,8 +45,6 @@ namespace EDNEVENTOS.Models
         [Required]
         [Display(Name = "Local do Evento")]
         public string LocalEvento { get; set; }
-
-        public virtual ICollection<Produtos> Produtos { get; set; }
 
     }
 }

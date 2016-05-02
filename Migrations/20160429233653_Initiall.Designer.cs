@@ -5,11 +5,11 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using EDNEVENTOS.Models;
 
-namespace EDNEVENTOS.Migrations
+namespace SistemaEDN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160426234309_Caixas")]
-    partial class Caixas
+    [Migration("20160429233653_Initiall")]
+    partial class Initiall
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,7 +97,7 @@ namespace EDNEVENTOS.Migrations
                     b.Property<string>("EstadoEvento")
                         .IsRequired();
 
-                    b.Property<byte[]>("ImagemProduto")
+                    b.Property<string>("ImagemProduto")
                         .IsRequired();
 
                     b.Property<string>("LocalEvento")
@@ -124,8 +124,6 @@ namespace EDNEVENTOS.Migrations
 
                     b.Property<string>("CategoriaProduto")
                         .IsRequired();
-
-                    b.Property<int?>("EventosIdEvento");
 
                     b.Property<string>("NomeProduto")
                         .IsRequired();
@@ -224,10 +222,6 @@ namespace EDNEVENTOS.Migrations
                     b.HasOne("EDNEVENTOS.Models.CaixaEventos")
                         .WithMany()
                         .HasForeignKey("CaixaEventosIdCaixa");
-
-                    b.HasOne("EDNEVENTOS.Models.Eventos")
-                        .WithMany()
-                        .HasForeignKey("EventosIdEvento");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>

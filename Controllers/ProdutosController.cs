@@ -21,6 +21,35 @@ namespace EDNEVENTOS.Controllers
         {
             return View(_context.Produtos.ToList());
         }
+
+        public IActionResult AdicionarProdutoEmEventoForm()
+        {
+            var eventos = new SelectList(_context.Eventos.Select(x => new { Name = x.NomeEvento,Id = x.IdEvento }).ToList(),
+                "Id", "Name");
+
+            ViewBag.Eventos = eventos;
+            
+
+            var produtos = new SelectList(_context.Produtos.Select(x => new { Name = x.NomeProduto, Id = x.IdProduto }).ToList(),
+                "Id", "Name");
+
+            ViewBag.Produtos = produtos;
+
+            return View();
+        }
+        
+       [HttpPost]
+        public IActionResult AdicionarProdutoEmEventoForm(ProdutoEmEvento prod)
+        {
+         
+                _context.ProdutoEmEvento.Add(prod);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+        
+            return View();
+        }
+
+
         [Authorize]
         // GET: Produtos/Details/5
         public IActionResult Details(int? id)

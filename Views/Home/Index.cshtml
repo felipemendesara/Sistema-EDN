@@ -7,7 +7,7 @@
 {
 
 
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta" style="background:url(../)">
     
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">
@@ -15,11 +15,11 @@
         </h2>
       </div>
       <div class="mdl-card__supporting-text">
-        <b>Cliente:</b>@Html.DisplayFor(modelItem => item.NomeEvento)
+        <b>Local:</b>@Html.DisplayFor(modelItem => item.LocalEvento)
         <br>
   
          
-        <b>Data:</b> 25/04/2016 <b>Horário:</b> 22:00
+        <b>Data:</b> @Html.DisplayFor(modelItem => item.DataEvento) 
       </div>
     
 

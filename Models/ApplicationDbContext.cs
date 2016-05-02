@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using EDNEVENTOS.Models;
+using EDNEVENTOS.Controllers;
 
 namespace EDNEVENTOS.Models
 {
@@ -20,5 +21,6 @@ namespace EDNEVENTOS.Models
         public DbSet<Produtos> Produtos { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<CaixaEventos> CaixaEventos { get; set; }
+        public DbSet<ProdutoEmEvento> ProdutoEmEvento { get; set; }
     }
 }

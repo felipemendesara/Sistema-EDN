@@ -5,11 +5,11 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using EDNEVENTOS.Models;
 
-namespace EDNEVENTOS.Migrations
+namespace SistemaEDN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160421192756_Initials")]
-    partial class Initials
+    [Migration("20160429233937_Batata")]
+    partial class Batata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,6 +65,20 @@ namespace EDNEVENTOS.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
+            modelBuilder.Entity("EDNEVENTOS.Models.CaixaEventos", b =>
+                {
+                    b.Property<int>("IdCaixa")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Caixa");
+
+                    b.Property<decimal>("CaixaInicial");
+
+                    b.Property<bool>("StatusCaixa");
+
+                    b.HasKey("IdCaixa");
+                });
+
             modelBuilder.Entity("EDNEVENTOS.Models.Eventos", b =>
                 {
                     b.Property<int>("IdEvento")
@@ -78,7 +92,12 @@ namespace EDNEVENTOS.Migrations
                     b.Property<string>("CidadeEvento")
                         .IsRequired();
 
+                    b.Property<DateTime>("DataEvento");
+
                     b.Property<string>("EstadoEvento")
+                        .IsRequired();
+
+                    b.Property<string>("ImagemProduto")
                         .IsRequired();
 
                     b.Property<string>("LocalEvento")
@@ -96,15 +115,29 @@ namespace EDNEVENTOS.Migrations
                     b.HasKey("IdEvento");
                 });
 
+            modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("EventoIdEvento");
+
+                    b.Property<int?>("ProdutoIdProduto");
+
+                    b.Property<int>("Quantidade");
+
+                    b.HasKey("Id");
+                });
+
             modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>
                 {
                     b.Property<int>("IdProduto")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CaixaEventosIdCaixa");
+
                     b.Property<string>("CategoriaProduto")
                         .IsRequired();
-
-                    b.Property<int?>("EventosIdEvento");
 
                     b.Property<string>("NomeProduto")
                         .IsRequired();
@@ -198,11 +231,22 @@ namespace EDNEVENTOS.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>
+            modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>
                 {
                     b.HasOne("EDNEVENTOS.Models.Eventos")
                         .WithMany()
-                        .HasForeignKey("EventosIdEvento");
+                        .HasForeignKey("EventoIdEvento");
+
+                    b.HasOne("EDNEVENTOS.Models.Produtos")
+                        .WithMany()
+                        .HasForeignKey("ProdutoIdProduto");
+                });
+
+            modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>
+                {
+                    b.HasOne("EDNEVENTOS.Models.CaixaEventos")
+                        .WithMany()
+                        .HasForeignKey("CaixaEventosIdCaixa");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>

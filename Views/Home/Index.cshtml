@@ -5,13 +5,10 @@
 
 @foreach (var item in Model)
 {
+   
 
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta"style="background-image:url(../Images/@item.ImagemProduto)">
 
-<<<<<<< HEAD
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta"style="background-image:url(login.jpg)">
-=======
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta" style="background:url(../)">
->>>>>>> e835ecf77c136d9e1415ebf425b41accfe5fe26b
     
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">
@@ -23,7 +20,8 @@
         <br>
   
          
-        <b>Data:</b> @Html.DisplayFor(modelItem => item.DataEvento) 
+        <b>Data:</b> @Html.DisplayFor(modelItem => item.DataEvento) <br />
+          <b>Valor: R$ @Html.DisplayFor(modelItem => item.ValorEvento)</b>
       </div>
     
 

@@ -4,86 +4,27 @@
     ViewData["Title"] = "Detalhes do Evento";
 }
 
-<h2>Eventos</h2>
 
-<div>
-    <h4>Detalhes do Evento</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NomeEvento)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CepEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CepEvento)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LocalEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LocalEvento)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CidadeEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CidadeEvento)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BairroEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BairroEvento)
-        </dd>
-     
+<div class="detalhe-produto">
+    <div class="lado-esquerdo">
+        <b>@Html.DisplayFor(model => model.NomeEvento)</b>
+        <figure><img src="~/images/@Html.DisplayFor(model => model.ImagemProduto)" class="produto-avatar"></figure>
+    </div>
+    <div class="lado-direito">
+        <b>Valor do evento:</b> R$ @Html.DisplayFor(model => model.ValorEvento)<br>
+        <b>Cidade:</b>@Html.DisplayFor(model => model.CidadeEvento)<br>
+        <b>Local:</b>@Html.DisplayFor(model => model.LocalEvento) , @Html.DisplayFor(model => model.NumeroLocalEvento) <br>
+        <b>Bairro:</b>@Html.DisplayFor(model => model.BairroEvento)<br>
+        <b>Estado:</b>@Html.DisplayFor(model => model.EstadoEvento)<br>
+        <b>Data/Hora:</b> @Html.DisplayFor(model => model.DataEvento)<br>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.DataEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DataEvento)
-        </dd>*@
-        <dt>
-            @Html.DisplayNameFor(model => model.EstadoEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EstadoEvento)
-        </dd>
-        @*<dt>
-            @Html.DisplayNameFor(model => model.ImagemProduto)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ImagemProduto)
-        </dd>*@
- 
-      
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroLocalEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumeroLocalEvento)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-  
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ValorEvento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ValorEvento)
-        </dd>
-    </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.IdEvento" class="btn btn-warning">Editar</a>
+        <a asp-action="Index" class="btn btn-primary">Voltar</a>
+    </div>
 </div>
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.IdEvento" class="btn btn-warning">Editar</a> 
-    <a asp-action="Index" class="btn btn-primary">Voltar</a>
-</p>
+   
+    @*<p>
+      
+    </p>*@

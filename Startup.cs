@@ -92,7 +92,7 @@ namespace EDNEVENTOS
 
             app.UseIdentity();
 
-            usuario.EnsureData(); 
+            //usuario.EnsureData(); 
 
             // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
 

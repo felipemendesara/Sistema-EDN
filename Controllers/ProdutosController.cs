@@ -21,7 +21,12 @@ namespace EDNEVENTOS.Controllers
         {
             return View(_context.Produtos.ToList());
         }
-
+        [Authorize]
+        // GET: Produtos
+        public IActionResult VenderProduto()
+        {
+            return View(_context.Produtos.ToList());
+        }
         public IActionResult AdicionarProdutoEmEventoForm()
         {
             var eventos = new SelectList(_context.Eventos.Select(x => new { Name = x.NomeEvento,Id = x.IdEvento }).ToList(),

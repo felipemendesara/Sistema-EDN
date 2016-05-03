@@ -19,6 +19,9 @@ namespace EDNEVENTOS.Models
         //[Display(Name = "Imagem")]
         //public byte[] ImagemProduto { get; set; }
         [Required]
+        [Display(Name = "Imagem")]
+        public string Imagem { get; set; }
+        [Required]
         [Display(Name = "Quantidade")]
         public int QuantidadeProduto { get; set; }
         [Required]

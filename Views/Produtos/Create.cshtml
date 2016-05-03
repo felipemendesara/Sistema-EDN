@@ -9,51 +9,51 @@
 <form asp-action="Create">
 
     <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-   <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
-       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-           <input asp-for="NomeProduto" class="mdl-textfield__input" type="text" />
-           <label class="mdl-textfield__label" for="sample1">Nome do Produto</label>
-           <span asp-validation-for="NomeProduto" class="text-danger" />
-       </div>
-   <br />
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <div class="col-md-10">
-            <input asp-for="CategoriaProduto" class="mdl-textfield__input" type="text" />
-            <label class="mdl-textfield__label" for="sample1">Categoria do Produto</label>
-            <span asp-validation-for="CategoriaProduto" class="text-danger" />
+    <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input asp-for="NomeProduto" class="mdl-textfield__input" type="text" />
+            <label class="mdl-textfield__label" for="sample1">Nome do Produto</label>
+            <span asp-validation-for="NomeProduto" class="text-danger" />
         </div>
-    </div><br />
-    @*<div class="form-group">
-            <label asp-for="ImagemProduto" class="col-md-2 control-label"></label>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-10">
-                <input asp-for="ImagemProduto" class="form-control" />
-                <span asp-validation-for="ImagemProduto" class="text-danger" />
+                <input asp-for="CategoriaProduto" class="mdl-textfield__input" type="text" />
+                <label class="mdl-textfield__label" for="sample1">Categoria do Produto</label>
+                <span asp-validation-for="CategoriaProduto" class="text-danger" />
             </div>
-        </div>*@
-    <br />
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        </div><br />
 
         <div class="col-md-10">
-            <input asp-for="ValorProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
-            <label class="mdl-textfield__label" for="sample2">Quantidade do Produto</label>
-            <span asp-validation-for="ValorProduto" class="mdl-textfield__error">Apenas numeros!</span>
+            <input asp-for="Imagem" class="mdl-textfield__input" type="file" placeholder="Valor" style="width:385px; padding:20px 47px;" />
+            <span asp-validation-for="Imagem" class="text-danger" />
         </div>
-    </div>
-       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <br />
 
-           <div class="col-md-10">
-               <input asp-for="QuantidadeProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
-               <label class="mdl-textfield__label" for="sample2">Valor do Produto</label>
-               <span asp-validation-for="QuantidadeProduto" class="mdl-textfield__error">Apenas numeros!</span>
-           </div>
-       </div>
-    <br />
-       <div class="form-group">
-           <div class="col-md-offset-2 col-md-10">
-               <input type="submit" value="Criar" class="btn btn-success" />
-           </div>
-       </div> </div>
-    
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+            <div class="col-md-10">
+                <input asp-for="ValorProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <label class="mdl-textfield__label" for="sample2">Valor do Produto</label>
+                <span asp-validation-for="ValorProduto" class="mdl-textfield__error">Apenas numeros!</span>
+            </div>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+            <div class="col-md-10">
+                <input asp-for="QuantidadeProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <label class="mdl-textfield__label" for="sample2">Quantidade do Produto</label>
+                <span asp-validation-for="QuantidadeProduto" class="mdl-textfield__error">Apenas numeros!</span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar" class="btn btn-success" />
+            </div>
+        </div>
+    </div> 
 </form>
 
 <div>

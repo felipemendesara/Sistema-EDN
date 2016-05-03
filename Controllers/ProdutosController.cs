@@ -92,6 +92,21 @@ namespace EDNEVENTOS.Controllers
             }
             return View(produtos);
         }
+        // POST: Produtos/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FinalizarEventos(Eventos eventos)
+        {
+            if (ModelState.IsValid)
+            {
+                eventos.Status = false;
+                _context.Update(eventos);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(eventos);
+        }
+
         [Authorize]
         // GET: Produtos/Edit/5
         public IActionResult Edit(int? id)

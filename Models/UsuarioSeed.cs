@@ -20,7 +20,7 @@ namespace EDNEVENTOS.Models
         }
         public async void EnsureData()
         {
-            var user = new ApplicationUser()
+            var user = new ApplicationUser
             {
                 UserName = "Admin",
                 Email = "felipemendesara@gmail.com",
@@ -36,7 +36,7 @@ namespace EDNEVENTOS.Models
             };
             await _roleManager.CreateAsync(role);
             await _roleManager.CreateAsync(roleUser);
-            await _userManager.CreateAsync(user,"Felipe007.");
+            await _userManager.CreateAsync(user,"Felipe007!");
             await _userManager.AddToRoleAsync(user, role.Name);
             await _userManager.AddClaimAsync(user, new Claim("DisplayName", "Administrador"));
         }

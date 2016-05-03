@@ -18,7 +18,8 @@ namespace EDNEVENTOS.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View(_context.Eventos.ToList());
+            
+            return View(_context.Eventos.OrderBy(model => model.DataEvento).Take(5).ToList());
        
         }
         [Authorize]

@@ -15,9 +15,7 @@ namespace EDNEVENTOS.Models
         [Required]
         [Display(Name = "Valor do Produto")]
         public decimal ValorProduto { get; set; }
-        //[Required]
-        //[Display(Name = "Imagem")]
-        //public byte[] ImagemProduto { get; set; }
+
         [Required]
         [Display(Name = "Imagem")]
         public string Imagem { get; set; }

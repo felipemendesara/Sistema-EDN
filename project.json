@@ -1,10 +1,12 @@
 {
   "userSecretsId": "aspnet5-EDNEVENTOS-3ec71e44-5867-4fb4-b4eb-6b0208096409",
   "version": "1.0.0-*",
+ 
   "compilationOptions": {
     "emitEntryPoint": true
   },
-
+  
+  
   "dependencies": {
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",

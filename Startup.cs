@@ -27,6 +27,7 @@ namespace EDNEVENTOS
             {
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
+
             }
 
             builder.AddEnvironmentVariables();
@@ -62,7 +63,7 @@ namespace EDNEVENTOS
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            SampleData.Initialize(app.ApplicationServices);
+            //SampleData.Initialize(app.ApplicationServices);
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -91,6 +92,7 @@ namespace EDNEVENTOS
             app.UseStaticFiles();
 
             app.UseIdentity();
+
 
             //usuario.EnsureData(); 
 

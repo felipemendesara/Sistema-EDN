@@ -17,6 +17,7 @@ namespace EDNEVENTOS.Models
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<ProdutoEmEvento>().HasKey(x => new { x.IdEvento, x.IdProduto });
         }
         public DbSet<Produtos> Produtos { get; set; }
         public DbSet<Eventos> Eventos { get; set; }

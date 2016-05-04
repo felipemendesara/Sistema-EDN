@@ -47,5 +47,7 @@ namespace EDNEVENTOS.Models
         [Display(Name = "Local do Evento")]
         public string LocalEvento { get; set; }
 
+        public ICollection <ProdutoEmEvento> ProdutoEmEvento{ get; set; }
+
     }
 }

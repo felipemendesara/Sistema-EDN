@@ -8,9 +8,14 @@ namespace EDNEVENTOS.Models
 {
     public class ProdutoEmEvento
     {
-        public int Id { get; set; }
+        public int IdEvento { get; set; }
+        public Eventos Eventos{ get; set; }
+
+        public int IdProduto { get; set; }
+        public Produtos Produto { get; set; }
         public int Quantidade {get;set;}
-        public virtual ICollection<Eventos>Evento { get; set; }
-        public virtual ICollection <Produtos> Produto { get; set; }
+
+
     }
+
 }

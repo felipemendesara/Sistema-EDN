@@ -21,7 +21,7 @@ namespace EDNEVENTOS
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true).AddEnvironmentVariables();
 
             if (env.IsDevelopment())
             {
@@ -56,6 +56,7 @@ namespace EDNEVENTOS
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             services.AddTransient<UsuarioSeed>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +64,7 @@ namespace EDNEVENTOS
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
             //SampleData.Initialize(app.ApplicationServices);
             if (env.IsDevelopment())
             {

@@ -8,8 +8,8 @@ using EDNEVENTOS.Models;
 namespace SistemaEDN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160504124518_RelacaoTabelas")]
-    partial class RelacaoTabelas
+    [Migration("20160505023419_Testando")]
+    partial class Testando
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

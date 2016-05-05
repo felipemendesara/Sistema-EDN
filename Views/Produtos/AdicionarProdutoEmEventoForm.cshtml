@@ -12,10 +12,10 @@
         <hr />
         
         <div class="form-group">
-            <label asp-for="Evento" class="col-md-2 control-label"></label>
+            <label asp-for="Eventos" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="Evento.Evento" asp-items="ViewBag.Eventos" class="form-control"></select>
-                <span asp-validation-for="Evento" class="text-danger"></span>
+                <select asp-for="Eventos.IdEvento" asp-items="ViewBag.Eventos" class="form-control"></select>
+                <span asp-validation-for="Eventos" class="text-danger"></span>
             </div>
         </div>
 

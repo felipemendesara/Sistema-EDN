@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -47,7 +47,7 @@ namespace EDNEVENTOS.Models
         [Display(Name = "Local do Evento")]
         public string LocalEvento { get; set; }
 
-        public ICollection <ProdutoEmEvento> ProdutoEmEvento{ get; set; }
+        //public ICollection <ProdutoEmEvento> ProdutoEmEvento{ get; set; }
 
     }
 }

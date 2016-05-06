@@ -116,13 +116,16 @@ namespace SistemaEDN.Migrations
 
             modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>
                 {
-                    b.Property<int>("IdEvento");
+                    b.Property<int>("IdProdutoEvento")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("IdProduto");
+                    b.Property<int?>("EventosIdEvento");
+
+                    b.Property<int?>("ProdutoIdProduto");
 
                     b.Property<int>("Quantidade");
 
-                    b.HasKey("IdEvento", "IdProduto");
+                    b.HasKey("IdProdutoEvento");
                 });
 
             modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>
@@ -234,11 +237,11 @@ namespace SistemaEDN.Migrations
                 {
                     b.HasOne("EDNEVENTOS.Models.Eventos")
                         .WithMany()
-                        .HasForeignKey("IdEvento");
+                        .HasForeignKey("EventosIdEvento");
 
                     b.HasOne("EDNEVENTOS.Models.Produtos")
                         .WithMany()
-                        .HasForeignKey("IdProduto");
+                        .HasForeignKey("ProdutoIdProduto");
                 });
 
             modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>

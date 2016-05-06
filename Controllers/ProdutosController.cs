@@ -48,8 +48,8 @@ namespace EDNEVENTOS.Controllers
        [HttpPost]
         public IActionResult AdicionarProdutoEmEventoForm(ProdutoEmEvento prod)
         {
-            prod.IdEvento = prod.Eventos.IdEvento;
-            prod.IdProduto = prod.Produto.IdProduto;
+            //prod.IdEvento = prod.Eventos.IdEvento;
+            //prod.IdProduto = prod.Produto.IdProduto;
                 _context.ProdutoEmEvento.Add(prod);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

@@ -5,7 +5,7 @@ using Microsoft.Data.Entity.Metadata;
 
 namespace SistemaEDN.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Migrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -129,6 +129,7 @@ namespace SistemaEDN.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CaixaEventosIdCaixa = table.Column<int>(nullable: true),
                     CategoriaProduto = table.Column<string>(nullable: false),
+                    Imagem = table.Column<string>(nullable: false),
                     NomeProduto = table.Column<string>(nullable: false),
                     QuantidadeProduto = table.Column<int>(nullable: false),
                     ValorProduto = table.Column<decimal>(nullable: false)
@@ -186,6 +187,32 @@ namespace SistemaEDN.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+            migrationBuilder.CreateTable(
+                name: "ProdutoEmEvento",
+                columns: table => new
+                {
+                    IdProdutoEvento = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EventosIdEvento = table.Column<int>(nullable: true),
+                    ProdutoIdProduto = table.Column<int>(nullable: true),
+                    Quantidade = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProdutoEmEvento", x => x.IdProdutoEvento);
+                    table.ForeignKey(
+                        name: "FK_ProdutoEmEvento_Eventos_EventosIdEvento",
+                        column: x => x.EventosIdEvento,
+                        principalTable: "Eventos",
+                        principalColumn: "IdEvento",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProdutoEmEvento_Produtos_ProdutoIdProduto",
+                        column: x => x.ProdutoIdProduto,
+                        principalTable: "Produtos",
+                        principalColumn: "IdProduto",
+                        onDelete: ReferentialAction.Restrict);
+                });
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
@@ -202,15 +229,16 @@ namespace SistemaEDN.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable("Eventos");
-            migrationBuilder.DropTable("Produtos");
+            migrationBuilder.DropTable("ProdutoEmEvento");
             migrationBuilder.DropTable("AspNetRoleClaims");
             migrationBuilder.DropTable("AspNetUserClaims");
             migrationBuilder.DropTable("AspNetUserLogins");
             migrationBuilder.DropTable("AspNetUserRoles");
-            migrationBuilder.DropTable("CaixaEventos");
+            migrationBuilder.DropTable("Eventos");
+            migrationBuilder.DropTable("Produtos");
             migrationBuilder.DropTable("AspNetRoles");
             migrationBuilder.DropTable("AspNetUsers");
+            migrationBuilder.DropTable("CaixaEventos");
         }
     }
 }

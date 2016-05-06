@@ -8,8 +8,8 @@ using EDNEVENTOS.Models;
 namespace SistemaEDN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160429233653_Initiall")]
-    partial class Initiall
+    [Migration("20160506014825_Migrations")]
+    partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -115,6 +115,20 @@ namespace SistemaEDN.Migrations
                     b.HasKey("IdEvento");
                 });
 
+            modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>
+                {
+                    b.Property<int>("IdProdutoEvento")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("EventosIdEvento");
+
+                    b.Property<int?>("ProdutoIdProduto");
+
+                    b.Property<int>("Quantidade");
+
+                    b.HasKey("IdProdutoEvento");
+                });
+
             modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>
                 {
                     b.Property<int>("IdProduto")
@@ -123,6 +137,9 @@ namespace SistemaEDN.Migrations
                     b.Property<int?>("CaixaEventosIdCaixa");
 
                     b.Property<string>("CategoriaProduto")
+                        .IsRequired();
+
+                    b.Property<string>("Imagem")
                         .IsRequired();
 
                     b.Property<string>("NomeProduto")
@@ -215,6 +232,17 @@ namespace SistemaEDN.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>
+                {
+                    b.HasOne("EDNEVENTOS.Models.Eventos")
+                        .WithMany()
+                        .HasForeignKey("EventosIdEvento");
+
+                    b.HasOne("EDNEVENTOS.Models.Produtos")
+                        .WithMany()
+                        .HasForeignKey("ProdutoIdProduto");
                 });
 
             modelBuilder.Entity("EDNEVENTOS.Models.Produtos", b =>

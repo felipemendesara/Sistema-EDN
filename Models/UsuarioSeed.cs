@@ -18,8 +18,9 @@ namespace EDNEVENTOS.Models
             _userManager = userManager;
             _roleManager = roleManager;
         }
+
         public async void EnsureData()
-        {
+      {
             var user = new ApplicationUser
             {
                 UserName = "Admin",

@@ -22,6 +22,7 @@ namespace EDNEVENTOS.Controllers
         {
             return View(_context.Eventos.ToList());
         }
+
         [Authorize]
         [HttpGet]
         public IActionResult Maps(int? id)
@@ -49,6 +50,7 @@ namespace EDNEVENTOS.Controllers
         {
             if (id == null)
             {
+
                 return HttpNotFound();
             }
 
@@ -125,7 +127,7 @@ namespace EDNEVENTOS.Controllers
             if (eventos == null)
             {
                 return HttpNotFound();
-            }
+            } 
 
             return View(eventos);
         }

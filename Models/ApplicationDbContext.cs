@@ -19,10 +19,11 @@ namespace EDNEVENTOS.Models
             // Add your customizations after calling base.OnModelCreating(builder);
             //builder.Entity<ProdutoEmEvento>().HasKey(x => new { x.IdEvento, x.IdProduto });
         }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Produtos> Produtos { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<CaixaEventos> CaixaEventos { get; set; }
         public DbSet<ProdutoEmEvento> ProdutoEmEvento { get; set; }
-        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
     }
 }

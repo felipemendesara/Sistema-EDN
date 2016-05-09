@@ -26,5 +26,9 @@ namespace EDNEVENTOS.ViewModels.Account
         [Required]
         [Display(Name = "Imagem")]
         public string Imagem { get; set; }
+
+        [Required]
+        [Display(Name = "Permissão")]
+        public string Role { get; set; }
     }
 }

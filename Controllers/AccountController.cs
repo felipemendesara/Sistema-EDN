@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using EDNEVENTOS.Models;
 using EDNEVENTOS.Services;
 using EDNEVENTOS.ViewModels.Account;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace EDNEVENTOS.Controllers
 {
@@ -23,19 +25,24 @@ namespace EDNEVENTOS.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
-
+        private readonly ApplicationDbContext _dbContext;
+        private readonly IApplicationEnvironment _appEnvironment;
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            IApplicationEnvironment appEnvironment,
+             ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _dbContext = dbContext;
+            _appEnvironment = appEnvironment;
         }
 
         //
@@ -90,6 +97,10 @@ namespace EDNEVENTOS.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
+            var roles = new SelectList(_dbContext.Roles.Select(x => new { Name = x.Name }).ToList(),
+              "Name", "Name");
+
+            ViewBag.Roles = roles;
             return View();
         }
 
@@ -102,18 +113,27 @@ namespace EDNEVENTOS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+
+
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email
+                };
+                var role = new IdentityRole
+                {
+                    Name = model.Role
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created a new account with password.");
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Scheme);
+                    await ServicoEmail.EnviarEmail(model.Email, "Confirme a sua conta", callbackUrl, 
+                        _appEnvironment, model.Email, model.Password);
+
                     return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
                 AddErrors(result);

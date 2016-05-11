@@ -23,6 +23,42 @@ namespace EDNEVENTOS.Controllers
             return View(_context.Eventos.ToList());
         }
 
+        public IActionResult AdicionarProdutoEmEventoForm(int? id)
+        {
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
+            if (eventos == null)
+            {
+                return HttpNotFound();
+            }
+           
+            var produtos = new SelectList(_context.Produtos.Select(x => new { Name = x.NomeProduto, Id = x.IdProduto }).ToList(),
+                "Id", "Name");
+
+            ViewBag.Produtos = produtos;
+
+
+
+            return View(eventos);
+         }
+
+        [HttpPost]
+        public IActionResult AdicionarProdutoEmEventoForm(ProdutoEmEvento prod)
+        {
+            //prod.IdEvento = prod.Eventos.IdEvento;
+            //prod.IdProduto = prod.Produto.IdProduto;
+            _context.ProdutoEmEvento.Add(prod);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
+            return View();
+        }
+
         [Authorize]
         [HttpGet]
         public IActionResult Maps(int? id)
@@ -99,7 +135,22 @@ namespace EDNEVENTOS.Controllers
             }
             return View(eventos);
         }
+        [Authorize]
+        // GET: Eventos/Edit/5
+        public IActionResult MenuEventos(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
 
+            Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
+            if (eventos == null)
+            {
+                return HttpNotFound();
+            }
+            return View(eventos);
+        }
         // POST: Eventos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]

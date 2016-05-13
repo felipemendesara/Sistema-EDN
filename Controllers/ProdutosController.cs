@@ -27,12 +27,6 @@ namespace EDNEVENTOS.Controllers
         {
             return View(_context.Produtos.ToList());
         }
-
-       
-        
-      
-
-
         [Authorize]
         // GET: Produtos/Details/5
         public IActionResult Details(int? id)

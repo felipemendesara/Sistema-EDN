@@ -25,7 +25,7 @@
         <link rel="shortcut icon" href="../img/favicon.png">
 
         <title>EDN Eventos - Painel do Administrador</title>
-      
+
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="~/css/material.min.css">
@@ -45,7 +45,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         @*<link rel="stylesheet" href="~/css/material.css" />
-        <link rel="stylesheet" href="~/css/materialize.css" />*@
+            <link rel="stylesheet" href="~/css/materialize.css" />*@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,23 +104,18 @@
                             <li>
                                 <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="font-size: 19px;width: 124px;background:#B83C2F">Sair</button>
                             </li>
-                        </form></ul>
-              
-</div>
+                        </form>
+                    </ul>
+
+                </div>
             </header>
             <nav class="mdl-navigation" id="menu">
 
                 <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">home</i>Inicio</a>
                 <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i>Eventos</a>
                 <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i>Produtos</a>
-                <a asp-controller="Produtos" asp-action="Grafico" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">equalizer</i>Grafico/Produtos</a>
-         
-                 <a asp-controller="Produtos" asp-action="VenderProduto" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">attach_money</i>Vender Produto</a>
- 
-                       <a asp-controller="CaixaEventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">attach_money</i>Caixa</a>
-         
                 <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">person</i>Registrar</a>
-             
+
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item">Some Action</li>
@@ -136,5 +131,5 @@
             <div class="page-content" id="conteudo">
                 @RenderBody();
             </div>
-            </main>
+        </main>
 </body>

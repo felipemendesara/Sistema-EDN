@@ -113,8 +113,10 @@ namespace EDNEVENTOS.Controllers
         {
             if (ModelState.IsValid)
             {
+                eventos.Status = true;
                 _context.Eventos.Add(eventos);
                 _context.SaveChanges();
+              
                 return RedirectToAction("Index");
             }
             return View(eventos);
@@ -164,6 +166,22 @@ namespace EDNEVENTOS.Controllers
             }
             return View(eventos);
         }
+
+        // POST: Eventos/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult FinalizarEvento(Eventos eventos)
+        {
+            if (ModelState.IsValid)
+            {
+                eventos.Status = false;
+                _context.Update(eventos);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(eventos);
+        }
+
         [Authorize]
         // GET: Eventos/Delete/5
         [ActionName("Delete")]

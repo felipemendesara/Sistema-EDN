@@ -40,9 +40,11 @@
        
         <th></th>
     </tr>
-
+    <p class="ok-login-msg">@ViewBag.Messages</p>
+   
     @foreach (var item in Model)
     {
+        
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NomeEvento)

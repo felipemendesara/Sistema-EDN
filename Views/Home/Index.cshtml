@@ -47,7 +47,7 @@
                 <b>Valor: R$ @Html.DisplayFor(modelItem => item.ValorEvento)</b>
             </div>
 
-            <form action="FinalizarEventos" method="post">
+            <form action="FinalizarEvento" method="post">
                 <div class="mdl-card__actions mdl-card--border">
                     <a asp-controller="Eventos" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
                         FINALIZAR EVENTO
@@ -57,7 +57,14 @@
                     </a>
 
                 </div>
-            </form>
+              
+                <div class="mdl-card__menu">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Finalizar"style="background-color:rgb(184, 60, 47);color:black"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+                    </div>
+                </div>
+                </form>
+            
     </div>
     }
 }

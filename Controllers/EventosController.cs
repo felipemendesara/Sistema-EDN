@@ -23,20 +23,23 @@ namespace EDNEVENTOS.Controllers
             return View(_context.Eventos.ToList());
         }
 
-        public IActionResult AdicionarProdutoEmEventoForm(int? id)
+        public IActionResult AdicionarProdutoEmEventoForm()
         {
 
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
+            //if (id == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
-            Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
-            if (eventos == null)
-            {
-                return HttpNotFound();
-            }
-           
+            //Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
+            //if (eventos == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            var eventos = new SelectList(_context.Eventos.Select(x => new { Name = x.NomeEvento, Id = x.IdEvento }).ToList(),
+                "Id", "Name");
+            ViewBag.Eventos = eventos;
+
             var produtos = new SelectList(_context.Produtos.Select(x => new { Name = x.NomeProduto, Id = x.IdProduto }).ToList(),
                 "Id", "Name");
 
@@ -44,7 +47,7 @@ namespace EDNEVENTOS.Controllers
 
 
 
-            return View(eventos);
+            return View();
          }
 
         [HttpPost]

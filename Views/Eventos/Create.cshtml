@@ -4,6 +4,42 @@
     ViewData["Title"] = "Criar Evento";
 }
 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+                //Preenche os campos na a&#231;&#227;o "Blur" (mudar de campo)
+                $("#cep").blur(function(){
+                        $("#rua").val("...")
+                $("#bairro").val("...")
+            $("#cidade").val("...")
+                $("#uf").val("...")
+
+            // seta a variavel requisitada no campo cep
+        consulta = $("#cep").val()
+
+                //Realiza a consulta
+                /*Realiza a consulta atrav&#233;s do toolsweb passando o cep como parametro
+                  e informando que vamos consultar no tipo javascript
+                */
+                $.getScript("http://www.toolsweb.com.br/webservice/clienteWebService.php?cep="+consulta+"&formato=javascript", function(){
+
+                        //unescape - Decodifica uma string codificada com o m&#233;todo escape.
+                        rua=unescape(resultadoCEP.logradouro)
+                        bairro=unescape(resultadoCEP.bairro)
+                        cidade=unescape(resultadoCEP.cidade)
+                        uf=unescape(resultadoCEP.uf)
+
+                        // preenche os campos
+                        $("#rua").val(rua)
+                        $("#bairro").val(bairro)
+                        $("#cidade").val(cidade)
+                        $("#uf").val(uf)
+
+                        });
+                });
+        });
+
+</script>
 
 
 <form asp-action="Create">
@@ -21,7 +57,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                <input asp-for="CepEvento" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <input asp-for="CepEvento" id="cep" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
                 <label class="mdl-textfield__label" for="sample2">CEP</label>
                 <span asp-validation-for="CepEvento" class="mdl-textfield__error">Apenas numeros!</span>
             </div>
@@ -30,7 +66,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                <input asp-for="LocalEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="LocalEvento" id="rua" class="mdl-textfield__input" type="text" />
                 <label class="mdl-textfield__label" for="sample1">Local do Evento...</label>
                 <span asp-validation-for="LocalEvento" class="text-danger" />
             </div>
@@ -38,27 +74,23 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                <input asp-for="CidadeEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="CidadeEvento" id="cidade" class="mdl-textfield__input" type="text" />
                 <label class="mdl-textfield__label" for="sample1">Cidade do Evento...</label>
                 <span asp-validation-for="CidadeEvento" class="text-danger" />
             </div>
         </div><br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        </div>
+    <br /><br /><br />
+    <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
+   
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
 
             <div class="col-md-10">
-                <input asp-for="BairroEvento" class="mdl-textfield__input" type="text" />
+                <input asp-for="BairroEvento" id="bairro" class="mdl-textfield__input" type="text" />
                 <label class="mdl-textfield__label" for="sample1">Bairro do Evento...</label>
                 <span asp-validation-for="BairroEvento" class="text-danger" />
             </div>
         </div><br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-
-            <div class="col-md-10">
-                <input asp-for="EstadoEvento" class="mdl-textfield__input" type="text" />
-                <label class="mdl-textfield__label" for="sample1">Estado...</label>
-                <span asp-validation-for="EstadoEvento" class="text-danger" />
-            </div>
-        </div>
         <br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
@@ -93,7 +125,10 @@
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Criar" class="btn btn-success" />
+                <input type="submit" value="Criar"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
             </div>
         </div>
         <br />
@@ -101,7 +136,7 @@
 </form>
 
 <div>
-    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+    <a asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:90px;top:-50px;"><i class="material-icons" style="color:aliceblue">reply</i>Voltar</a>
 </div>
 
 <script>

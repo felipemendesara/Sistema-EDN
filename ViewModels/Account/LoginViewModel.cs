@@ -19,5 +19,7 @@ namespace EDNEVENTOS.ViewModels.Account
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+       
     }
 }

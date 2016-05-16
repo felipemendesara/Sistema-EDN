@@ -4,7 +4,11 @@
     ViewData["Title"] = "Eventos";
 }
 
+@if(ViewBag.Message == "Enviado")
+{
+    <h1>asdf</h1>
 
+}
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
@@ -21,9 +25,7 @@
         @*<th>
                 @Html.DisplayNameFor(model => model.DataEvento)
             </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.EstadoEvento)
-        </th>
+  
         @*<th>
                 @Html.DisplayNameFor(model => model.ImagemProduto)
             </th>*@
@@ -59,9 +61,7 @@
             @*<td>
                     @Html.DisplayFor(modelItem => item.DataEvento)
                 </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoEvento)
-            </td>
+    
             @*<td>
                     @Html.DisplayFor(modelItem => item.ImagemProduto)
                 </td>*@
@@ -76,9 +76,8 @@
             </td>
           
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
+                <a  asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.IdEvento">Detalhar</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEvento">Excluir</a> |
                 <a asp-action="Maps" asp-route-id="@item.IdEvento">Mapa</a>
             </td>
         </tr>

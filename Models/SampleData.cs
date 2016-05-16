@@ -32,7 +32,6 @@ namespace EDNEVENTOS.Models
                         CepEvento = 06787360,
                         CidadeEvento = "SAO PAULO",
                         BairroEvento = "Jd Salete",
-                        EstadoEvento = "SP",
                         LocalEvento = "PORS",
                         NumeroLocalEvento = 800,
                         Status = true

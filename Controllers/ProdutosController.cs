@@ -55,11 +55,12 @@ namespace EDNEVENTOS.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Produtos produtos)
-        {
+       {
             if (ModelState.IsValid)
             {
                 _context.Produtos.Add(produtos);
                 _context.SaveChanges();
+                ViewBag.Message = "Enviado!";
                 return RedirectToAction("Index");
             }
             return View(produtos);

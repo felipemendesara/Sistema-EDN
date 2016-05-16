@@ -3768,3 +3768,4 @@ componentHandler.register({
     widget: false
 });
 }());
+

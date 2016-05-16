@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Produtos";
 }
+@if (ViewBag.Message == "Enviado")
+{
+    <h1>asdf</h1>
 
+}
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
@@ -23,7 +27,6 @@
         </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -45,7 +48,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar </a>|
                 <a asp-action="Details" asp-route-id="@item.IdProduto" class="btn btn-warning">Detalhar</a>|
-                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Excluir</a>
             </td>
         </tr>
     }

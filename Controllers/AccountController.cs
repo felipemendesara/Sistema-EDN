@@ -84,7 +84,7 @@ namespace EDNEVENTOS.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ViewBag.Message = "Erro!";
                     return View(model);
                 }
             }

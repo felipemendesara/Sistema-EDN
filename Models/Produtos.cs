@@ -28,7 +28,7 @@ namespace EDNEVENTOS.Models
         [Required]
         [Display(Name = "Nome do Produto")]
         public string NomeProduto { get; set; }
-        //public ICollection<ProdutoEmEvento> ProdutoEmeEvento { get; set; }
+        //public ICollection<ProdutoEmEvento> ProdutoEmeEvento { get; set; 
 
     }
 }

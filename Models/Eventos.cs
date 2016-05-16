@@ -19,9 +19,6 @@ namespace EDNEVENTOS.Models
         [Display(Name = "Bairro")]
         public string BairroEvento { get; set; }
         [Required]
-        [Display(Name = "Estado")]
-        public string EstadoEvento { get; set; }
-        [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data do Evento")]
         public DateTime DataEvento { get; set; }

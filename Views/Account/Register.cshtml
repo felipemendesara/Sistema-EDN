@@ -7,8 +7,6 @@
 <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
     <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
     <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
-        <h5>Novo Usuário</h5>
-        <hr />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
            
             <div class="col-md-10">
@@ -47,8 +45,8 @@
             </div>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-default">Register</button>
+            <div class="col-md-offset-2 col-md-10" style="padding:0px 0px 0px 0px">
+                <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" >Registrar</button>
             </div>
         </div>
     </div>

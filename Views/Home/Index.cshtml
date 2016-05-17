@@ -2,13 +2,31 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<script type="text/javascript">
+    function finalizar(idEvento) {
+        console.log(idEvento);
+        $.ajax({
+            type: "POST",
+            //datatype: 'json',
+            url: 'Eventos/FinalizarEvento/',
+            //contentType: "application/json",
+            data: "IdEvento="+idEvento, //JSON.stringify({ IdEvento: idEvento }),
+            success: function (data) {
+                alert(data.mensagem);
+                if (data.codigo == 0) {
+                    $("#div-event-" + idEvento).remove();
+                }
+            }
+        });
+    }
+</script>
 
 @foreach (var item in Model)
 {
 
     @if (item.Status == true)
     {
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta" style="background-image:url(../Images/@item.ImagemProduto)">
+        <div id="div-event-@item.IdEvento" class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta" style="background-image:url(../Images/@item.ImagemProduto)">
 
 
             <div class="mdl-card__title">
@@ -47,7 +65,7 @@
                 <b>Valor: R$ @Html.DisplayFor(modelItem => item.ValorEvento)</b>
             </div>
 
-            <form action="FinalizarEvento" method="post">
+  
                 <div class="mdl-card__actions mdl-card--border">
                     <a asp-controller="Eventos" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
                         FINALIZAR EVENTO
@@ -57,14 +75,15 @@
                     </a>
 
                 </div>
-              
+
                 <div class="mdl-card__menu">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Finalizar"style="background-color:rgb(184, 60, 47);color:black"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"/>
+                       <button type="button"
+                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="finalizar(@item.IdEvento)">Finalizar</button>
                     </div>
                 </div>
-                </form>
-            
-    </div>
+           
+
+        </div>
     }
 }

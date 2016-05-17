@@ -141,9 +141,18 @@ namespace EDNEVENTOS.Controllers
         }
         [Authorize]
         // GET: Produtos/Grafico/5
-        public IActionResult Grafico()
+        public IActionResult Grafico(int? id)
         {
-            return View(_context.Produtos.ToList());
+            var produtosPorEvento = (from pe in _context.ProdutoEmEvento
+                                     where pe.Eventos.IdEvento == id
+                                     orderby pe.Produto.NomeProduto
+                                     select new RegistroRelatorioProdutoPorEvento
+                                     {
+                                         IdProduto = pe.Produto.IdProduto,
+                                         NomeProduto = pe.Produto.NomeProduto,
+                                         QuantidadeProduto = pe.Quantidade
+                                     }).ToList();
+            return View(produtosPorEvento);
         }
     }
 }

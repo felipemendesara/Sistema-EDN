@@ -10,13 +10,11 @@
     <div class="form-horizontal">
         <h4>ProdutoEmEvento</h4>
         <hr />
-        
+
         <div class="form-group">
-            <label asp-for="Eventos" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="Eventos.IdEvento" asp-items="ViewBag.Eventos" class="form-control"></select>
-                <span asp-validation-for="Eventos" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Eventos.IdEvento" value="@ViewBag.Eventos.IdEvento" />
+            <label class="col-md-2 control-label">Evento: </label>
+            <label class="col-md-2 control-label">@ViewBag.Eventos.NomeEvento</label>
         </div>
 
         <div class="form-group">

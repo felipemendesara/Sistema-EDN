@@ -9,7 +9,7 @@
         </div>
 
         <div class="mdl-card__actions">
-            <a asp-controller="Produtos" asp-action="Grafico" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+            <a asp-controller="Produtos" asp-action="Grafico" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
                 GRAFICO
                 <i class="material-icons">chevron_right</i>
             </a>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="mdl-card__actions">
-            <a asp-controller="Eventos" asp-action="AdicionarProdutoEmEventoForm" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+            <a asp-controller="Eventos" asp-action="AdicionarProdutoEmEventoForm" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
                 PRODUTO/EVENTO
                 <i class="material-icons">chevron_right</i>
             </a>

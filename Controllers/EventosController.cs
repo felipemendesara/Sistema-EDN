@@ -23,26 +23,28 @@ namespace EDNEVENTOS.Controllers
             return View(_context.Eventos.ToList());
         }
 
-        public IActionResult AdicionarProdutoEmEventoForm()
+        public IActionResult AdicionarProdutoEmEventoForm(int? id)
         {
 
-            //if (id == null)
-            //{
-            //    return HttpNotFound();
-            //}
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
 
-            //Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
-            //if (eventos == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            var eventos = new SelectList(_context.Eventos.Select(x => new { Name = x.NomeEvento, Id = x.IdEvento }).ToList(),
-                "Id", "Name");
+            Eventos eventos = _context.Eventos.Single(m => m.IdEvento == id);
+            if (eventos == null)
+            {
+                return HttpNotFound();
+            }
+
+            //var eventos = new SelectList(_context.Eventos.Select(x => new { Name = x.NomeEvento, Id = x.IdEvento }).ToList(),
+            //    "Id", "Name");
+
             ViewBag.Eventos = eventos;
 
             var produtos = new SelectList(_context.Produtos.Select(x => new { Name = x.NomeProduto, Id = x.IdProduto }).ToList(),
                 "Id", "Name");
-
+            ViewBag.IdEvento = id;
             ViewBag.Produtos = produtos;
 
 
@@ -58,8 +60,6 @@ namespace EDNEVENTOS.Controllers
             _context.ProdutoEmEvento.Add(prod);
             _context.SaveChanges();
             return RedirectToAction("Index");
-
-            return View();
         }
 
         [Authorize]
@@ -172,17 +172,26 @@ namespace EDNEVENTOS.Controllers
 
         // POST: Eventos/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult FinalizarEvento(Eventos eventos)
+        public JsonResult FinalizarEvento(int IdEvento)
         {
-            if (ModelState.IsValid)
-            {
-                eventos.Status = false;
-                _context.Update(eventos);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+            // Carrega o evento a partir do Id
+            Eventos eventos = (from e in _context.Eventos
+                               where e.IdEvento == IdEvento
+                               select e).FirstOrDefault();
+            if(eventos != null && eventos.IdEvento > 0) {
+                // Verifica se ele  ja nao esta finalizado
+                if(eventos.Status == true)
+                {
+                    eventos.Status = false;
+                    _context.Update(eventos);
+                    _context.SaveChanges();
+                    return Json(new { codigo = 0, mensagem = "Evento finalizado!" });
+                } else
+                {
+                    return Json(new { codigo = 1, mensagem = "Evento ja finalizado." });
+                }
             }
-            return View(eventos);
+            return Json(new { codigo = 1, mensagem = "Evento nao encontrado." });
         }
 
         [Authorize]

@@ -1,4 +1,4 @@
-@model IEnumerable<EDNEVENTOS.Models.Produtos>
+@model IEnumerable<EDNEVENTOS.Models.RegistroRelatorioProdutoPorEvento>
 
 @{
     ViewData["Title"] = "Detalhes dos Produtos";
@@ -28,7 +28,7 @@
          @foreach (var item in Model)
          {
           <text>
-          ['@item.NomeProduto',@item.QuantidadeProduto],
+          ['@item.NomeProduto', @item.QuantidadeProduto],
           </text>
          }
 

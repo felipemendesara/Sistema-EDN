@@ -4,11 +4,7 @@
     ViewData["Title"] = "Eventos";
 }
 
-@if(ViewBag.Message == "Enviado")
-{
-    <h1>asdf</h1>
 
-}
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
@@ -42,7 +38,7 @@
        
         <th></th>
     </tr>
-    <p class="ok-login-msg">@ViewBag.Messages</p>
+
    
     @foreach (var item in Model)
     {

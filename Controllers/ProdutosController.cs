@@ -23,9 +23,20 @@ namespace EDNEVENTOS.Controllers
         }
         [Authorize] 
         // GET: Produtos
-        public IActionResult VenderProduto()
+        public IActionResult VenderProduto(int? id)
         {
-            return View(_context.Produtos.ToList());
+            var produtosPorEvento = (from pe in _context.ProdutoEmEvento
+                                     where pe.Eventos.IdEvento == id
+                                     orderby pe.Produto.NomeProduto
+                                     select new RegistroRelatorioProdutoPorEvento
+                                     {
+                                         IdProduto = pe.Produto.IdProduto,
+                                         NomeProduto = pe.Produto.NomeProduto,
+                                         QuantidadeProduto = pe.Quantidade,
+                                         Imagem = pe.Produto.Imagem,
+                                         ValorProduto = pe.Produto.ValorProduto
+                                     }).ToList();
+            return View(produtosPorEvento);
         }
         [Authorize]
         // GET: Produtos/Details/5

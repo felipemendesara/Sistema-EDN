@@ -25,7 +25,7 @@
         </div>
 
         <div class="mdl-card__actions">
-            <a asp-controller="Produtos" asp-action="VenderProduto" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+            <a asp-controller="Produtos" asp-action="VenderProduto" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
                 VENDER PRODUTOS
                 <i class="material-icons">chevron_right</i>
             </a>

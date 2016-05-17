@@ -28,7 +28,9 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
     "Dapper": "1.42.0",
-    "Sendgrid": "6.3.4"
+    "Sendgrid": "6.3.4",
+    "xunit": "2.1.0",
+    "xunit.runners": "2.0.0"
   },
 
   "commands": {

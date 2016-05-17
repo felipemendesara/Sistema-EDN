@@ -42,8 +42,9 @@
    
     @foreach (var item in Model)
     {
-        
-        <tr>
+        if (item.Status == false)
+        {
+        <tr  style="background-color:rgba(184, 60, 47, 0.96)">
             <td>
                 @Html.DisplayFor(modelItem => item.NomeEvento)
             </td>
@@ -72,11 +73,47 @@
             </td>
           
             <td>
-                <a  asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEvento">Detalhar</a> |
-                <a asp-action="Maps" asp-route-id="@item.IdEvento">Mapa</a>
+                <B>FINALIZADO</B>
             </td>
         </tr>
+        }
+        else
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeEvento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocalEvento)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CidadeEvento)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DataEvento)
+                    </td>*@
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ImagemProduto)
+                    </td>*@
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroLocalEvento)
+                </td>
+
+                <td style="color:green">
+                    R$ @Html.DisplayFor(modelItem => item.ValorEvento)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdEvento">Detalhar</a> |
+                    <a asp-action="Maps" asp-route-id="@item.IdEvento">Mapa</a>
+                </td>
+            </tr>
+        }
     }
 </table>
 <br />

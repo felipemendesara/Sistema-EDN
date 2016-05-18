@@ -17,8 +17,6 @@ namespace EDNEVENTOS.Models
         //public int idproduto { get; set; }
         public Produtos Produto { get; set; }
         public int Quantidade {get;set;}
-
-
     }
 
 }

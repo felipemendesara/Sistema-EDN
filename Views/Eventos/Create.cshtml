@@ -124,6 +124,13 @@
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+            <div class="col-md-10">
+                <input asp-for="Caixa" class="mdl-textfield__input"  type="text" maxlength="10" style="width:385px; padding:20px 47px;" />
+                <span asp-validation-for="Caixa" class="text-danger" />
+            </div>
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Criar"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
             </div>

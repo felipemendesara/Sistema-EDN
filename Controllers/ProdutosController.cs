@@ -34,10 +34,20 @@ namespace EDNEVENTOS.Controllers
                                          NomeProduto = pe.Produto.NomeProduto,
                                          QuantidadeProduto = pe.Quantidade,
                                          Imagem = pe.Produto.Imagem,
-                                         ValorProduto = pe.Produto.ValorProduto
+                                         ValorProduto = pe.Produto.ValorProduto,
+                                         Caixa = pe.Eventos.Caixa
                                      }).ToList();
             return View(produtosPorEvento);
         }
+        [HttpPost]
+        public JsonResult VenderProduto(int IdProdtuto)
+        {
+            RegistroRelatorioProdutoPorEvento reg = new RegistroRelatorioProdutoPorEvento();
+            reg.QuantidadeProduto = -1;
+            reg.Caixa += reg.ValorProduto;
+            return Json(new { codigo = 1, mensagem = "Venda efetuada!" });
+        }
+
         [Authorize]
         // GET: Produtos/Details/5
         public IActionResult Details(int? id)

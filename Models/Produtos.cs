@@ -20,9 +20,6 @@ namespace EDNEVENTOS.Models
         [Display(Name = "Imagem")]
         public string Imagem { get; set; }
         [Required]
-        [Display(Name = "Quantidade")]
-        public int QuantidadeProduto { get; set; }
-        [Required]
         [Display(Name = "Categoria")]
         public string CategoriaProduto { get; set; }
         [Required]

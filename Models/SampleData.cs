@@ -22,7 +22,6 @@ namespace EDNEVENTOS.Models
                     NomeProduto = "Coca Cola",
                     CategoriaProduto = "Bebida",
                     ValorProduto = 200,
-                    QuantidadeProduto = 80,
                 }).Entity;
                 context.Eventos.AddRange(
                     new Eventos()

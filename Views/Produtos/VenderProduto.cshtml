@@ -3,6 +3,22 @@
 @{
     ViewData["Title"] = "Produtos";
 }
+<script type="text/javascript">
+    function vender(idProduto) {
+        console.log(idProduto);
+        $.ajax({
+            type: "POST",
+            //datatype: 'json',
+            url: '',
+            //contentType: "application/json",
+            data: "IdProduto="+idProduto, //JSON.stringify({ IdEvento: idEvento }),
+            success: function (data) {
+                alert(data.mensagem);    
+            }
+        });
+    }
+</script>
+
 
 <div class="android-more-section">
    
@@ -18,13 +34,12 @@
                     <h4 class="mdl-card__title-text">Create your own Android character</h4>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">@item.NomeProduto <br><div style="color:greenyellow">R$ @item.ValorProduto</div></span>
+                    <span class="mdl-typography--font-light mdl-typography--subhead">@item.NomeProduto (@item.QuantidadeProduto)<br><div style="color:greenyellow">R$ @item.ValorProduto</div></span>
                 </div>
                 <div class="mdl-card__actions">
-                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-                        VENDER
-                        <i class="material-icons">chevron_right</i>
-                    </a>
+                    <button type="button" 
+                            class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"onclick="vender(@item.IdProduto)">VENDER</button>
+                 
                 </div>
             </div>
         }

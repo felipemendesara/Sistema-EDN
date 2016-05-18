@@ -43,7 +43,9 @@ namespace EDNEVENTOS.Models
         [Required]
         [Display(Name = "Local do Evento")]
         public string LocalEvento { get; set; }
-
+        [Required]
+        [Display(Name = "Caixa do evento")]
+        public decimal Caixa { get; set; }
         //public ICollection <ProdutoEmEvento> ProdutoEmEvento{ get; set; }
 
     }

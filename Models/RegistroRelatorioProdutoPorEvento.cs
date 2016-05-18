@@ -13,5 +13,6 @@ namespace EDNEVENTOS.Models
 
         public string Imagem { get; set; }
         public decimal ValorProduto { get; set; }
+        public decimal Caixa { get; set; }
     }
 }

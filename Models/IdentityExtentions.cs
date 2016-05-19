@@ -15,5 +15,16 @@ namespace EDNEVENTOS.Models
 
             return displayNameClaim;
         }
+        public static string Role(this IIdentity identity)
+        {
+            var displayRole = ((ClaimsIdentity)identity).FindFirst("Role");
+
+            if (displayRole != null)
+            {
+                return displayRole.Value;
+            }
+
+            return string.Empty;
+        }
     }
 }

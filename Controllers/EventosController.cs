@@ -49,7 +49,7 @@ namespace EDNEVENTOS.Controllers
 
 
 
-            return View();
+            return View("AdicionarProdutoEmEventoForm");
          }
 
         [HttpPost]
@@ -59,7 +59,8 @@ namespace EDNEVENTOS.Controllers
             //prod.IdProduto = prod.Produto.IdProduto;
             _context.ProdutoEmEvento.Add(prod);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.Message = "a";
+            return RedirectToAction("AdicionarProdutoEmEventoForm");
         }
 
         [Authorize]

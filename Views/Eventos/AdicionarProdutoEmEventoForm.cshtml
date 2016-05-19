@@ -4,38 +4,36 @@
     ViewData["Title"] = "AdicionarProdutoEmEvento";
 }
 
-<h2>AdicionarProdutoEmEvento</h2>
-
+@if (ViewBag.Message == "a")
+{ <h1>asdf</h1>}
 <form asp-action="AdicionarProdutoEmEventoForm" method="post">
-    <div class="form-horizontal">
-        <h4>ProdutoEmEvento</h4>
-        <hr />
+    <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
+        <div class="form-horizontal">
 
-        <div class="form-group">
-            <input type="hidden" asp-for="Eventos.IdEvento" value="@ViewBag.Eventos.IdEvento" />
-            <label class="col-md-2 control-label">Evento: </label>
-            <label class="col-md-2 control-label">@ViewBag.Eventos.NomeEvento</label>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Produto" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="Produto.IdProduto" asp-items="ViewBag.Produtos" class="form-control"></select>
-                <span asp-validation-for="Produto" class="text-danger"></span>
+            <div class="form-group">
+                <input type="hidden" asp-for="Eventos.IdEvento" value="@ViewBag.Eventos.IdEvento" />
+                <label class="col-md-2 control-label">Evento: </label>
+                <label class="col-md-2 control-label">@ViewBag.Eventos.NomeEvento</label>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label asp-for="Quantidade" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Quantidade" class="form-control" />
-                <span asp-validation-for="Quantidade" class="text-danger" />
+            <div class="form-group">
+                <label asp-for="Produto" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="Produto.IdProduto" asp-items="ViewBag.Produtos" class="form-control"></select>
+                    <span asp-validation-for="Produto" class="text-danger"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
+            <div class="col-md-10">
+                <label asp-for="Quantidade" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Quantidade" class="mdl-textfield__input" type="text" />
+                    <span asp-validation-for="Quantidade" class="text-danger" />
+                </div>
+            </div>
+            <br />
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
             </div>
         </div>
     </div>

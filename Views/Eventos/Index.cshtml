@@ -108,12 +108,13 @@
                 </td>
 
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdEvento">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdEvento">Detalhar</a> |
-                    <a asp-action="Maps" asp-route-id="@item.IdEvento">Mapa</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdEvento" ><i class="material-icons">mode_edit</i></a> 
+                    <a asp-action="Details" asp-route-id="@item.IdEvento"><i class="material-icons">toc</i></a> 
+                    <a asp-action="Maps" asp-route-id="@item.IdEvento"><i class="material-icons">place</i></a>
                 </td>
             </tr>
         }
+        
     }
 </table>
 <br />

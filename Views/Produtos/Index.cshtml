@@ -42,9 +42,9 @@
                R$ @Html.DisplayFor(modelItem => item.ValorProduto)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary">Editar </a>|
-                <a asp-action="Details" asp-route-id="@item.IdProduto" class="btn btn-warning">Detalhar</a>|
-                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger">Excluir</a>
+                <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary"><i class="material-icons">mode_edit</i></a>
+                <a asp-action="Details" asp-route-id="@item.IdProduto" class="btn btn-warning"><i class="material-icons">toc</i></a>
+                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a>
             </td>
         </tr>
     }

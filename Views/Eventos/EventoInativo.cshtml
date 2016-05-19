@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EDNEVENTOS.Models.Eventos>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<script type="text/javascript">
+    function finalizar(idEvento) {
+        console.log(idEvento);
+        $.ajax({
+            type: "POST",
+            //datatype: 'json',
+            url: 'Eventos/FinalizarEvento/',
+            //contentType: "application/json",
+            data: "IdEvento="+idEvento, //JSON.stringify({ IdEvento: idEvento }),
+            success: function (data) {
+                alert(data.mensagem);
+                if (data.codigo == 0) {
+                    $("#div-event-" + idEvento).remove();
+                }
+            }
+        });
+    }
+</script>   
+
+@foreach (var item in Model)
+{
+
+    @if (item.Status == false)
+    {
+        <div id="div-event-@item.IdEvento" class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta" style="background-image:url(../Images/@item.ImagemProduto)">
+
+
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+
+                    @if (item.DataEvento == DateTime.Today)
+                    {
+                        @Html.DisplayFor(modelItem => item.NomeEvento)
+                        {
+                            <div style="color:darkred;"><b>(FINALIZADO!)</b></div>
+                        }
+                    }
+                    else if (item.DataEvento < DateTime.Today)
+                    {
+                        @Html.DisplayFor(modelItem => item.NomeEvento)
+                        {
+                            <div style="color:darkred;"><b>(FINALIZADO!)</b></div>
+                        }
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.NomeEvento)
+
+                    }
+
+
+
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <b>Local:</b>@Html.DisplayFor(modelItem => item.LocalEvento)
+                <br>
+
+
+                <b>Data:</b> @Html.DisplayFor(modelItem => item.DataEvento) <br />
+                <b>Valor: R$ @Html.DisplayFor(modelItem => item.ValorEvento)</b>
+            </div>
+
+  
+                <div class="mdl-card__actions mdl-card--border">
+       
+                    <a asp-controller="Eventos" asp-action="MenuEventos" asp-route-id="@item.IdEvento" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
+                        VER EVENTO
+                    </a>
+
+                </div>
+        </div>
+    }
+}

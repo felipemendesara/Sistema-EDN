@@ -22,7 +22,10 @@ namespace EDNEVENTOS.Controllers
         {
             return View(_context.Eventos.ToList());
         }
-
+        public IActionResult EventoInativo()
+        {
+            return View(_context.Eventos.OrderBy(model => model.DataEvento).ToList());
+        }
         public IActionResult AdicionarProdutoEmEventoForm(int? id)
         {
 

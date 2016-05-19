@@ -11,9 +11,9 @@
             //datatype: 'json',
             url: '',
             //contentType: "application/json",
-            data: "IdProduto="+idProduto, //JSON.stringify({ IdEvento: idEvento }),
+            data: "IdProduto=" + idProduto, //JSON.stringify({ IdEvento: idEvento }),
             success: function (data) {
-                alert(data.mensagem);    
+                alert(data.mensagem);
             }
         });
     }
@@ -21,7 +21,7 @@
 
 
 <div class="android-more-section">
-   
+
     <div class="android-card-container mdl-grid">
 
         @foreach (var item in Model)
@@ -33,15 +33,32 @@
                 <div class="mdl-card__title">
                     <h4 class="mdl-card__title-text">Create your own Android character</h4>
                 </div>
+
                 <div class="mdl-card__supporting-text">
                     <span class="mdl-typography--font-light mdl-typography--subhead">@item.NomeProduto (@item.QuantidadeProduto)<br><div style="color:greenyellow">R$ @item.ValorProduto</div></span>
                 </div>
-                <div class="mdl-card__actions">
-                    <button type="button" 
-                            class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"onclick="vender(@item.IdProduto)">VENDER</button>
-                 
+                @if (item.QuantidadeProduto > 0)
+                {
+                    <div class="mdl-card__actions">
+                        <button type="button"
+                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" onclick="vender(@item.IdProduto)">
+                            VENDER
+                        </button>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="mdl-card__actions">
+                        <button type="button"
+                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" disabled>
+                            <b>PRODUTO ESGOTADO</b>
+</button>
+
+                    </div>
+
+                }
                 </div>
+                }
             </div>
-        }
-    </div>
-</div>
+        </div>

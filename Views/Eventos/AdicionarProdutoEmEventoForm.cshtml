@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label asp-for="Produto" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
-                    <select asp-for="Produto.IdProduto" asp-items="ViewBag.Produtos" class="form-control"></select>
+                    <select asp-for="Produto.IdProduto" asp-items="ViewBag.Produtos"class="mdl-textfield__input" type="text"></select>
                     <span asp-validation-for="Produto" class="text-danger"></span>
                 </div>
             </div>

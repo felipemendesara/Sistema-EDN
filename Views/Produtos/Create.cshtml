@@ -18,7 +18,14 @@
         <br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-10">
-                <input asp-for="CategoriaProduto" class="mdl-textfield__input" type="text" />
+                <select asp-for="CategoriaProduto" class="mdl-textfield__input" type="text">
+                    <option>Selecione a categoria</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Bebidas Alcoolicas">Bebidas Alcoolicas</option>
+                    <option value="Energetico">Comidas</option>
+                    <option value="Combo">Combo Pleno</option>
+                    <option value="Doces">Doces</option>
+                </select>
                 <label class="mdl-textfield__label" for="sample1">Categoria do Produto</label>
                 <span asp-validation-for="CategoriaProduto" class="text-danger" />
             </div>

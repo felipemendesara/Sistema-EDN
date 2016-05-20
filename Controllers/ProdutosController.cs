@@ -19,7 +19,7 @@ namespace EDNEVENTOS.Controllers
         // GET: Produtos
         public IActionResult Index()
         {
-            return View(_context.Produtos.ToList());
+            return View(_context.Produtos.OrderBy(m => m.CategoriaProduto).ToList());
         }
         [Authorize] 
         // GET: Produtos
@@ -69,6 +69,7 @@ namespace EDNEVENTOS.Controllers
         // GET: Produtos/Create
         public IActionResult Create()
         {
+   
             return View();
         }
 

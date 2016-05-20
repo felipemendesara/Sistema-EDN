@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EDNEVENTOS</title>
+    <title>@ViewData["Title"] - EDN</title>
+    <link rel="icon" href="~/images/favicon.ico"     type="image/png">
     <environment names="Development">
         @*<link rel="stylesheet" href="~/css/material.css" />
             <link rel="stylesheet" href="~/css/materialize.css" />*@
@@ -110,13 +111,13 @@
                 </div>
             </header>
             <nav class="mdl-navigation" id="menu">
-
-                <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">home</i>Inicio</a>
-                <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i>Eventos</a>
-                <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i>Produtos</a>
+          
+                <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">home</i><b>Inicio</b></a>
+                <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i><b>Eventos</b></a>
+                <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i><b>Produtos</b></a>
                 <hr />
-                <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">person_add</i>Registrar Usuários</a>
-                 <a asp-controller="Eventos" asp-action="EventoInativo" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event_busy</i>Eventos Inativos</a>
+                <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">person_add</i><b>Registrar Usuários</b></a>
+                 <a asp-controller="Eventos" asp-action="EventoInativo" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event_busy</i><b>Eventos Inativos</b></a>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item">Some Action</li>

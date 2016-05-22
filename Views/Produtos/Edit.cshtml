@@ -8,7 +8,7 @@
 
     <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
     <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" hidden>
             <input asp-for="IdProduto" class="mdl-textfield__input" type="text" />
             <label class="mdl-textfield__label" for="sample1">Nome do Produto</label>
             <span asp-validation-for="IdProduto" class="text-danger" />

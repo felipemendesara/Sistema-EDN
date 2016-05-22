@@ -8,9 +8,10 @@ using EDNEVENTOS.Models;
 namespace SistemaEDN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160520172941_Imagem")]
+    partial class Imagem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -113,24 +114,6 @@ namespace SistemaEDN.Migrations
                     b.Property<decimal>("ValorEvento");
 
                     b.HasKey("IdEvento");
-                });
-
-            modelBuilder.Entity("EDNEVENTOS.Models.ItemVenda", b =>
-                {
-                    b.Property<int>("NumeroVenda")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("IdEvento");
-
-                    b.Property<int>("IdProduto");
-
-                    b.Property<int>("Quantidade");
-
-                    b.Property<decimal>("ValorTotal");
-
-                    b.Property<decimal>("ValorUnit");
-
-                    b.HasKey("NumeroVenda");
                 });
 
             modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>
@@ -248,17 +231,6 @@ namespace SistemaEDN.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("EDNEVENTOS.Models.ItemVenda", b =>
-                {
-                    b.HasOne("EDNEVENTOS.Models.Eventos")
-                        .WithMany()
-                        .HasForeignKey("IdEvento");
-
-                    b.HasOne("EDNEVENTOS.Models.Produtos")
-                        .WithMany()
-                        .HasForeignKey("IdProduto");
                 });
 
             modelBuilder.Entity("EDNEVENTOS.Models.ProdutoEmEvento", b =>

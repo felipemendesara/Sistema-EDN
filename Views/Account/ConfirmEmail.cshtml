@@ -1,12 +1,220 @@
 ﻿@{
     ViewData["Title"] = "Confirm Email";
+    Layout = "";
 }
 
-<h2>@ViewData["Title"].</h2>
-<div>
-    <p>
-        Obrigado por confirmar o seu email. Por gentileza, @Html.ActionLink("Clique aqui para fazer o log in", "Login", "Account",
+@using System.Collections.Generic
+@using Microsoft.AspNet.Http
+@using Microsoft.AspNet.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/style.css" />
+@{
+    Layout = "";
+}
+
+<html>
+
+<meta charset="UTF-8">
+<title>Random Login Form</title>
+
+
+
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        color: #fff;
+        font-family: Arial;
+        font-size: 12px;
+    }
+
+    .body {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -40px;
+        bottom: -40px;
+        width: auto;
+        height: auto;
+        background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTx4yBrPGopKHwkt7hSuXSGPna__m5mrIpXBOvkPdKTxBFmXLFaGw");
+        background-size: cover;
+        -webkit-filter: blur(5px);
+        z-index: 0;
+    }
+
+    .grad {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -40px;
+        bottom: -40px;
+        width: auto;
+        height: auto;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    .header {
+        position: absolute;
+        top: calc(50% - 35px);
+        left: calc(50% - 255px);
+        z-index: 2;
+    }
+
+        .header div {
+            float: left;
+            color: #B83C2F;
+            font-family: 'Exo', sans-serif;
+            font-size: 35px;
+            font-weight: 200;
+        }
+
+            .header div span {
+                color: #101010 !important;
+            }
+
+    .login {
+        position: absolute;
+        top: calc(50% - 75px);
+        left: calc(50% - 50px);
+        height: 150px;
+        width: 350px;
+        padding: 10px;
+        z-index: 2;
+    }
+
+        .login input[type=text] {
+            width: 250px;
+            height: 30px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            color: #fff;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 4px;
+        }
+
+        .login input[type=password] {
+            width: 250px;
+            height: 30px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            color: #fff;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 4px;
+            margin-top: 10px;
+        }
+
+        .login input[type=button] {
+            width: 260px;
+            height: 35px;
+            background: #B83C2F;
+            border: 1px solid #0C0C0C;
+            cursor: pointer;
+            border-radius: 2px;
+            color: #0C0C0C;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 6px;
+            margin-top: 10px;
+        }
+
+
+            .login input[type=button]:hover {
+                opacity: 0.8;
+            }
+
+            .login input[type=button]:active {
+                opacity: 0.6;
+            }
+
+        .login input[type=text]:focus {
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+
+        .login input[type=password]:focus {
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+
+        .login input[type=button]:focus {
+            outline: none;
+        }
+
+    ::-webkit-input-placeholder {
+        color: rgba(255,255,255,0.6);
+    }
+
+    ::-moz-input-placeholder {
+        color: rgba(255,255,255,0.6);
+    }
+</style>
+@ViewBag.mensagem
+<script src="js/prefixfree.min.js"></script>
+
+</head>
+<body>
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        <div><b>EDN<span><h1>
+    Obrigado por confirmar o seu email. Por gentileza, @Html.ActionLink("Clique aqui para fazer o log in", "Login", "Account",
 routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </p>
-s
-</div>
+</h1></span></b></div>
+    </div>
+    <br>
+
+    <div class="login">
+
+        <section>
+
+            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
+          
+            </form>
+            @if (ViewBag.Message == "Erro!")
+            {
+                <div class="alert alert-danger">
+                    <strong>Usuario ou senha invalidos!</strong>
+                </div>
+            }
+        </section>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

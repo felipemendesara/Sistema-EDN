@@ -1,4 +1,4 @@
-@model IEnumerable<EDNEVENTOS.Models.RegistroRelatorioProdutoPorEvento>
+@model IEnumerable<EDNEVENTOS.Models.ProdutoEmEvento>
 
 @{
     ViewData["Title"] = "Produtos";
@@ -6,42 +6,72 @@
 <script type="text/javascript">
     function vender(idProduto) {
         console.log(idProduto);
+        var qtde = 1;
+        // mostra um inputbox
+
         $.ajax({
             type: "POST",
             //datatype: 'json',
             url: '',
             //contentType: "application/json",
-            data: "IdProduto=" + idProduto, //JSON.stringify({ IdEvento: idEvento }),
+            data: "IdEvento=@ViewBag.idEvento&Quantidade=" + qtde + "&IdProduto=" + idProduto, //JSON.stringify({ IdEvento: idEvento }),
             success: function (data) {
                 alert(data.mensagem);
+                location.reload();
             }
         });
     }
 </script>
+<div style="padding 0px 0px 0px 0px">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:259px">
+        <div class="mdl-card__title">
+            <h2 style="color:green">
+                <div style="color:#B83C2F"><b>CAIXA<hr /></div> R$</b> @foreach (var item in Model.Take(1))
+                {
+                    <b>  @item.Eventos.Caixa</b>
+
+                }
+            </h2>
+        </div>
 
 
+        <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+            </button>
+        </div>
+    </div>
+</div>
+@*<div style="color:green;font-size:60px">
+    R$
+  
+</div>*@
 <div class="android-more-section">
 
     <div class="android-card-container mdl-grid">
-
+   
+  
+                <br /><br />
         @foreach (var item in Model)
         {
+
+      
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
                 <div class="mdl-card__media" style="background-color:aliceblue">
-                    <img src="~/images/ImagemProdutos/@item.Imagem" style="height:207px; width:213px;background-color:aliceblue">
+                    <img src="~/images/ImagemProdutos/@item.Produto.Imagem" style="height:207px;background-color:aliceblue">
                 </div>
                 <div class="mdl-card__title">
                     <h4 class="mdl-card__title-text">Create your own Android character</h4>
                 </div>
 
                 <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">@item.NomeProduto (@item.QuantidadeProduto)<br><div style="color:greenyellow">R$ @item.ValorProduto</div></span>
+                    <span class="mdl-typography--font-light mdl-typography--subhead">@item.Produto.NomeProduto (@item.Quantidade)<br><div style="color:greenyellow">R$ @item.Produto.ValorProduto</div></span>
                 </div>
-                @if (item.QuantidadeProduto > 0)
+                @if (item.Quantidade > 0)
                 {
                     <div class="mdl-card__actions">
                         <button type="button"
-                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" onclick="vender(@item.IdProduto)">
+                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" onclick="vender(@item.Produto.IdProduto)">
                             VENDER
                         </button>
 
@@ -53,12 +83,12 @@
                         <button type="button"
                                 class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" disabled>
                             <b>PRODUTO ESGOTADO</b>
-</button>
+                        </button>
 
                     </div>
 
                 }
-                </div>
-                }
             </div>
-        </div>
+        }
+    </div>
+</div>

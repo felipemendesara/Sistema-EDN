@@ -8,9 +8,10 @@ using EDNEVENTOS.Models;
 namespace SistemaEDN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160521044859_VendaItem")]
+    partial class VendaItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -125,10 +126,6 @@ namespace SistemaEDN.Migrations
                     b.Property<int>("IdProduto");
 
                     b.Property<int>("Quantidade");
-
-                    b.Property<decimal>("ValorTotal");
-
-                    b.Property<decimal>("ValorUnit");
 
                     b.HasKey("NumeroVenda");
                 });

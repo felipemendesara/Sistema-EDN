@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EDN</title>
-    <link rel="icon" href="~/images/favicon.ico"     type="image/png">
+    <link rel="icon" href="~/images/favicon.ico" type="image/png">
     <environment names="Development">
         @*<link rel="stylesheet" href="~/css/material.css" />
             <link rel="stylesheet" href="~/css/materialize.css" />*@
@@ -20,6 +20,9 @@
         <meta name="apple-mobile-web-app-title" content="Material Design Lite">
         <link rel="apple-touch-icon-precomposed" href="../img/ios-desktop.png">
 
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Tile icon for Win8 (144x144 + tile color) -->
         <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#3372DF">
@@ -87,14 +90,34 @@
                 <span class="mdl-layout-title">EDN Eventos - Painel Administrativo</span>
             </div>
         </header>
+        @{
+            var campoTitulo = "";
 
+            if (User.IsInRole("Admin"))
+            {
+                campoTitulo = "Administrador";
+            }
+            else {
+                campoTitulo = "Usuário";
+            }
+        }
         <!-- Menu Lateral -->
         <div class="mdl-layout__drawer">
             <header class="drawer-user-area">
-                <img src="~/images/login.jpg" class="user-avatar">
-                @*<h6 class="mdl-typography--title user-name">Felipe Mendes</h6>*@
+                @if (User.IsInRole("Admin"))
+                {
+                    <img src="~/images/login.jpg" class="user-avatar">
+                }
+                else
+                {
+                    <img src="~/images/loginLucas.jpg" class="user-avatar">
+
+                }
+                <h6 class="mdl-typography--title user-name">@campoTitulo</h6>
                 <div class="demo-avatar-dropdown">
-                    <span>@User.Identity.Name</span>
+                    <div>
+                        <span>@User.Identity.Name</span>
+                    </div>
                     <div class="mdl-layout-spacer"></div>
                     <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -103,21 +126,26 @@
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                         <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
                             <li>
-                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="font-size: 19px;width: 124px;background:#B83C2F">Sair</button>
+                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="font-size: 19px;width: 124px;background:#B83C2F"><i class="material-icons menu-icons">settings_power</i>Sair</button>
                             </li>
+
                         </form>
                     </ul>
+
 
                 </div>
             </header>
             <nav class="mdl-navigation" id="menu">
-          
+                    
                 <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">home</i><b>Inicio</b></a>
                 <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i><b>Eventos</b></a>
                 <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i><b>Produtos</b></a>
                 <hr />
-                <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">person_add</i><b>Registrar Usuários</b></a>
-                 <a asp-controller="Eventos" asp-action="EventoInativo" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event_busy</i><b>Eventos Inativos</b></a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">person_add</i><b>Registrar Usuários</b></a>
+                }
+                <a asp-controller="Eventos" asp-action="EventoInativo" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event_busy</i><b>Eventos Finalizados</b></a>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item">Some Action</li>

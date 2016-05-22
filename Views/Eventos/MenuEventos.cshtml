@@ -36,6 +36,8 @@
       
     </div>
 }
+@if (User.IsInRole("Admin"))
+{
     <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
         <div class="mdl-card__media" style="background-color:white">
             <img src="~/images/money.png" style="height:207px; width:213px;background-color:#FFFFFF">
@@ -51,6 +53,9 @@
             </a>
         </div>
     </div>
+}
+@if (User.IsInRole("Admin"))
+{
 @if (Model.Status == true)
 {
     <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
@@ -63,13 +68,14 @@
 
         <div class="mdl-card__actions">
             <a asp-controller="Eventos" asp-action="AdicionarProdutoEmEventoForm" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
-                PRODUTO/EVENTO
+                ADICIONAR PRODUTO
                 <i class="material-icons">chevron_right</i>
             </a>
         </div>
 
     </div>
 
+    }
 }
 </div>
 

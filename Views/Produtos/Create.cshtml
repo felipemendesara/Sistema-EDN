@@ -3,13 +3,27 @@
 @{
     ViewData["Title"] = "Criar Produto";
 }
-
-
+<script>
+    function valor(o, f) {
+        v_obj = o
+        v_fun = f
+        setTimeout("execmascara()", 1)
+    }
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value)
+    }
+    function mreais(v) {
+        v = v.replace(/\D/g, "")						//Remove tudo o que não é dígito
+        v = v.replace(/(\d{2})$/, ",$1") 			//Coloca a virgula
+        v = v.replace(/(\d+)(\d{3},\d{2})$/g, "$1.$2") 	//Coloca o primeiro ponto
+        return v
+    }
+</script>
 
 <form asp-action="Create">
 
     <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-    <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
+    <div class="mdl-card mdl-shadow--2dp" style="padding:20px; width:370px;">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input asp-for="NomeProduto" class="mdl-textfield__input" type="text" />
             <label class="mdl-textfield__label" for="sample1">Nome do Produto</label>
@@ -22,7 +36,7 @@
                     <option>Selecione a categoria</option>
                     <option value="Bebidas">Bebidas</option>
                     <option value="Bebidas Alcoolicas">Bebidas Alcoolicas</option>
-                    <option value="Energetico">Comidas</option>
+                    <option value="Comidas">Comidas</option>
                     <option value="Combo">Combo Pleno</option>
                     <option value="Doces">Doces</option>
                 </select>
@@ -32,7 +46,7 @@
         </div><br />
 
         <div class="col-md-10">
-            <input asp-for="Imagem" class="mdl-textfield__input" type="file" placeholder="Valor" style="width:385px; padding:20px 47px;" />
+            <input asp-for="Imagem" class="mdl-textfield__input" type="file" placeholder="Valor" style="width:385px;" />
             <span asp-validation-for="Imagem" class="text-danger" />
         </div>
         <br />
@@ -41,7 +55,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                <input asp-for="ValorProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <input asp-for="ValorProduto" class="mdl-textfield__input"  onkeypress="valor(this,mreais)"  type="text"  />
                 <label class="mdl-textfield__label" for="sample2">Valor do Produto</label>
                 <span asp-validation-for="ValorProduto" class="mdl-textfield__error">Apenas numeros!</span>
             </div>

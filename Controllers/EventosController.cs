@@ -20,12 +20,13 @@ namespace EDNEVENTOS.Controllers
         // GET: Eventos
         public IActionResult Index()
         {
-            return View(_context.Eventos.ToList());
+            return View(_context.Eventos.OrderByDescending(model => model.Status).ToList());
         }
         public IActionResult EventoInativo()
         {
             return View(_context.Eventos.OrderBy(model => model.DataEvento).ToList());
         }
+   
         public IActionResult AdicionarProdutoEmEventoForm(int? id)
         {
 
@@ -123,9 +124,11 @@ namespace EDNEVENTOS.Controllers
                 eventos.Status = true;
                 _context.Eventos.Add(eventos);
                 _context.SaveChanges();
-              
-                return RedirectToAction("Index");
+                Index();
+                ViewBag.Message = "Sucesso";
+                return View("Index");
             }
+            ViewBag.Message = "Erro";
             return View(eventos);
         }
         [Authorize]

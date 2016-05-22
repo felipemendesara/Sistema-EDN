@@ -3,9 +3,13 @@
 @{
     ViewData["Title"] = "Produtos";
 }
-@if (ViewBag.Message == "Enviado")
+@if (ViewBag.Message == "Sucesso")
 {
-    <h1>asdf</h1>
+    <p class="ok-login-msg">Produto cadastrado com sucesso!</p>
+}
+@if (ViewBag.Message == "Erro")
+{
+    <p class="erro-login-msg">Erro ao cadastrar produto</p>
 
 }
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
@@ -41,15 +45,21 @@
             <td  style="color:green">
                R$ @Html.DisplayFor(modelItem => item.ValorProduto)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary"><i class="material-icons">mode_edit</i></a>
+            <td>@if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@item.IdProduto" class="btn btn-primary"><i class="material-icons">mode_edit</i></a>}
                 <a asp-action="Details" asp-route-id="@item.IdProduto" class="btn btn-warning"><i class="material-icons">toc</i></a>
-                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a>
+@if (User.IsInRole("Admin"))
+{
+                <a asp-action="Delete" asp-route-id="@item.IdProduto" class="btn btn-danger"><i class="material-icons">delete_sweep</i></a>}
             </td>
         </tr>
     }
 </table>
 <br />
+@if (User.IsInRole("Admin"))
+{
 <p>
     <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-457px"><i class="material-icons" style="color:aliceblue">add</i></a>
 </p>
+}

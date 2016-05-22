@@ -4,7 +4,15 @@
     ViewData["Title"] = "Eventos";
 }
 
+@if (ViewBag.Message == "Sucesso")
+{
+    <p class="ok-login-msg">Evento cadastrado com sucesso!</p>
+}
+@if (ViewBag.Message == "Erro")
+{
+    <p class="erro-login-msg">Erro ao cadastrar evento</p>
 
+}
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
@@ -108,7 +116,9 @@
                 </td>
 
                 <td>
+                    @if (User.IsInRole("Admin")) { 
                     <a asp-action="Edit" asp-route-id="@item.IdEvento" ><i class="material-icons">mode_edit</i></a> 
+                    }
                     <a asp-action="Details" asp-route-id="@item.IdEvento"><i class="material-icons">toc</i></a> 
                     <a asp-action="Maps" asp-route-id="@item.IdEvento"><i class="material-icons">place</i></a>
                 </td>
@@ -118,7 +128,9 @@
     }
 </table>
 <br />
+@if (User.IsInRole("Admin"))
+{
 <p>
     <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-457px"><i class="material-icons" style="color:aliceblue">add</i></a>
 </p>
-
+}

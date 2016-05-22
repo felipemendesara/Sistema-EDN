@@ -21,11 +21,11 @@ namespace EDNEVENTOS.Services
             {
                 var minhaMensagem = new SendGridMessage();
                 minhaMensagem.AddTo(email);
-                minhaMensagem.From = new System.Net.Mail.MailAddress("felipemendesara123@gmail.com", "EDN EVENTOS");
+                minhaMensagem.From = new System.Net.Mail.MailAddress("servtecnologia@acrediaria.com.br", "EDN EVENTOS");
                 minhaMensagem.Subject = assunto;
                 minhaMensagem.Html = conteudoTemplate;
 
-                var credenciais = new NetworkCredential("felipemendesara", "Felipe007.");
+                var credenciais = new NetworkCredential("user-clienteweb-sendmail", "Ya8tEqaQ");
                 var transporteWeb = new Web(credenciais);
                 return transporteWeb.DeliverAsync(minhaMensagem);
             }

@@ -4,6 +4,36 @@
     ViewData["Title"] = "Criar Evento";
 }
 
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+    body {
+  display: flex;
+}
+
+.file_input_div {
+  margin: auto;
+  width: 250px;
+  height: 40px;
+}
+
+.file_input {
+  float: left;
+}
+
+#file_input_text_div {
+  width: 200px;
+  margin-top: -8px;
+  margin-left: 5px;
+}
+
+.none {
+  display: none;
+}
+</style>
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -38,7 +68,59 @@
             });
         });
     });
+    function mascara(t, mask) {
+        var i = t.value.length;
+        var saida = mask.substring(1, 0);
+        var texto = mask.substring(i)
+        if (texto.substring(0, 1) != saida) {
+            t.value += texto.substring(0, 1);
+        }
+    }
 
+
+    var fileInputTextDiv = document.getElementById('file_input_text_div');
+    var fileInput = document.getElementById('file_input_file');
+    var fileInputText = document.getElementById('file_input_text');
+    fileInput.addEventListener('change', changeInputText);
+    fileInput.addEventListener('change', changeState);
+
+    function changeInputText() {
+        var str = fileInput.value;
+        var i;
+        if (str.lastIndexOf('\\')) {
+            i = str.lastIndexOf('\\') + 1;
+        } else if (str.lastIndexOf('/')) {
+            i = str.lastIndexOf('/') + 1;
+        }
+        fileInputText.value = str.slice(i, str.length);
+    }
+
+    function changeState() {
+        if (fileInputText.value.length != 0) {
+            if (!fileInputTextDiv.classList.contains("is-focused")) {
+                fileInputTextDiv.classList.add('is-focused');
+            }
+        } else {
+            if (fileInputTextDiv.classList.contains("is-focused")) {
+                fileInputTextDiv.classList.remove('is-focused');
+            }
+        }
+    }
+
+    function valor(o, f) {
+        v_obj = o
+        v_fun = f
+        setTimeout("execmascara()", 1)
+    }
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value)
+    }
+    function mreais(v) {
+        v = v.replace(/\D/g, "")						//Remove tudo o que não é dígito
+        v = v.replace(/(\d{2})$/, ",$1") 			//Coloca a virgula
+        v = v.replace(/(\d+)(\d{3},\d{2})$/g, "$1.$2") 	//Coloca o primeiro ponto
+        return v
+    }
 </script>
 
 
@@ -47,7 +129,7 @@
 
     <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
     <div>
-        <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
+        <div class="mdl-card mdl-shadow--2dp" style="padding:20px;width:370px;">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <div class="col-md-10">
                     <input asp-for="NomeEvento" class="mdl-textfield__input" type="text" placeholder="Nome do evento" />
@@ -95,35 +177,37 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
-                    <input asp-for="ValorEvento" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" placeholder="Valor do evento" />
+                    <input asp-for="ValorEvento" class="mdl-textfield__input" type="text" onkeypress="valor(this,mreais)" placeholder="Valor do evento" />
                     <span asp-validation-for="ValorEvento" class="mdl-textfield__error">Apenas numeros!</span>
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
-                    <input asp-for="ImagemProduto" class="mdl-textfield__input" type="file" placeholder="Valor" style="width:385px; padding:20px 47px;" />
+                    <input asp-for="ImagemProduto" class="mdl-textfield__input" type="file" placeholder="Valor" style="width:385px; padding:20px 0px;" />
                     <span asp-validation-for="ImagemProduto" class="text-danger" />
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
-                    <input asp-for="DataEvento" class="mdl-textfield__input" type="datetime" maxlength="10" placeholder="Data" style="width:385px; padding:20px 47px;" />
+                    <input asp-for="DataEvento" class="mdl-textfield__input" type="datetime" onkeypress="mascara(this, '##/##/####')" maxlength="10" placeholder="Data"  />
                     <span asp-validation-for="DataEvento" class="text-danger" />
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
-                    <input asp-for="Caixa" class="mdl-textfield__input" type="text" maxlength="10" style="width:385px; padding:20px 47px;" placeholder="Caixa" />
+                    <input asp-for="Caixa" class="mdl-textfield__input"  onkeypress="valor(this,mreais)" type="text" maxlength="10"  placeholder="Caixa" />
                     <span asp-validation-for="Caixa" class="text-danger" />
                 </div>
             </div>
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Criar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
                 </div>
+                <br /><br />
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Criar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
                 </div>
@@ -136,7 +220,7 @@
 
 </form>
 
-<div>
+<div style="padding 0px 0px 0px 0px">
     <a asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:95px;top:-50px;"><i class="material-icons" style="color:aliceblue">reply</i>Voltar</a>
 </div>
 

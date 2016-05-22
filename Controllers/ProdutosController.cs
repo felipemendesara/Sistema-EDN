@@ -25,27 +25,56 @@ namespace EDNEVENTOS.Controllers
         // GET: Produtos
         public IActionResult VenderProduto(int? id)
         {
+            ViewBag.idEvento = id;
+
             var produtosPorEvento = (from pe in _context.ProdutoEmEvento
                                      where pe.Eventos.IdEvento == id
                                      orderby pe.Produto.NomeProduto
-                                     select new RegistroRelatorioProdutoPorEvento
+                                     select new ProdutoEmEvento
                                      {
-                                         IdProduto = pe.Produto.IdProduto,
-                                         NomeProduto = pe.Produto.NomeProduto,
-                                         QuantidadeProduto = pe.Quantidade,
-                                         Imagem = pe.Produto.Imagem,
-                                         ValorProduto = pe.Produto.ValorProduto,
-                                         Caixa = pe.Eventos.Caixa
+                                         IdProdutoEvento = pe.IdProdutoEvento,
+                                         Eventos = pe.Eventos,
+                                         Quantidade = pe.Quantidade,
+                                         Produto = pe.Produto,
+                                         //IdProduto = pe.Produto.IdProduto,
+                                         //NomeProduto = pe.Produto.NomeProduto,
+                                         //QuantidadeProduto = pe.Quantidade,
+                                         //Imagem = pe.Produto.Imagem,
+                                         //ValorProduto = pe.Produto.ValorProduto,
+                                         //Caixa = pe.Eventos.Caixa
                                      }).ToList();
             return View(produtosPorEvento);
         }
         [HttpPost]
-        public JsonResult VenderProduto(int IdProdtuto)
+        public JsonResult VenderProduto(ItemVenda venda)
         {
-            RegistroRelatorioProdutoPorEvento reg = new RegistroRelatorioProdutoPorEvento();
-            reg.QuantidadeProduto = -1;
-            reg.Caixa += reg.ValorProduto;
-            return Json(new { codigo = 1, mensagem = "Venda efetuada!" });
+            // Valida se tem estoque
+            ProdutoEmEvento estoque = _context.ProdutoEmEvento.First(pe => pe.Eventos.IdEvento == venda.IdEvento && pe.Produto.IdProduto == venda.IdProduto);
+            if (estoque.Quantidade > 0)
+            {
+                venda.Produto = _context.Produtos.First(p => p.IdProduto == venda.IdProduto);
+                venda.Evento = _context.Eventos.First(e => e.IdEvento == venda.IdEvento);
+                // Atualiza valor
+                venda.ValorUnit = venda.Produto.ValorProduto;
+                venda.ValorTotal = venda.ValorUnit * venda.Quantidade;
+                venda.Evento.Caixa += venda.ValorTotal;
+
+                // Registra a venda
+                _context.ItemVenda.Add(venda);
+
+                // Atualiza o caixa
+                _context.Eventos.Update(venda.Evento);
+
+                // Atualiza o estoque
+                estoque.Quantidade = estoque.Quantidade - 1;
+                _context.ProdutoEmEvento.Update(estoque);
+                _context.SaveChanges();
+                return Json(new { codigo = 1, mensagem = "Venda efetuada!" });
+            } else
+            {
+                return Json(new { codigo = 2, mensagem = "Produto esgotado!" });
+            }
+
         }
 
         [Authorize]
@@ -65,6 +94,7 @@ namespace EDNEVENTOS.Controllers
 
             return View(produtos);
         }
+        [Authorize(Roles = "Admin")]
         [Authorize]
         // GET: Produtos/Create
         public IActionResult Create()
@@ -82,9 +112,11 @@ namespace EDNEVENTOS.Controllers
             {
                 _context.Produtos.Add(produtos);
                 _context.SaveChanges();
-                ViewBag.Message = "Enviado!";
-                return RedirectToAction("Index");
+                Index();
+                ViewBag.Message = "Sucesso";
+                return View("Index");
             }
+            ViewBag.Message = "Erro";
             return View(produtos);
         }
         // POST: Produtos/Edit/5
@@ -97,7 +129,7 @@ namespace EDNEVENTOS.Controllers
                 eventos.Status = false;
                 _context.Update(eventos);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return View();
             }
             return View(eventos);
         }

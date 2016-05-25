@@ -63,7 +63,6 @@ namespace EDNEVENTOS.Controllers
             //prod.IdProduto = prod.Produto.IdProduto;
             _context.ProdutoEmEvento.Add(prod);
             _context.SaveChanges();
-            ViewBag.Message = "a";
             return RedirectToAction("AdicionarProdutoEmEventoForm");
         }
 
@@ -80,6 +79,7 @@ namespace EDNEVENTOS.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IdEvento = id;
             return View(eventos);
         }
         [Authorize]
@@ -150,7 +150,7 @@ namespace EDNEVENTOS.Controllers
         [Authorize]
         // GET: Eventos/Edit/5
         public IActionResult MenuEventos(int? id)
-        {
+            {
             if (id == null)
             {
                 return HttpNotFound();

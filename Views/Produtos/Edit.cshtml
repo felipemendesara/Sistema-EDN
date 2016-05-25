@@ -39,20 +39,19 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                <input asp-for="ValorProduto" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" />
+                <input asp-for="ValorProduto" class="mdl-textfield__input" type="text" />
                 <label class="mdl-textfield__label" for="sample2">Valor do Produto</label>
                 <span asp-validation-for="ValorProduto" class="mdl-textfield__error">Apenas numeros!</span>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Editar" class="btn btn-success" />
+                <input type="submit" value="Editar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
             </div>
         </div>
     </div>
 </form>
 
-<div>
-    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+<div style="padding 0px 0px 0px 0px">
+    <a asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:95px;top:-50px;"><i class="material-icons" style="color:aliceblue">reply</i>Voltar</a>
 </div>
-

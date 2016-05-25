@@ -4,8 +4,18 @@
     ViewData["Title"] = "AdicionarProdutoEmEvento";
 }
 
-@if (ViewBag.Message == "a")
-{ <h1>asdf</h1>}
+<div style="padding:0px 974px 0px 0px">
+    <a asp-controller="Eventos" asp-route-id="@ViewBag.Eventos.IdEvento" asp-action="MenuEventos"><i class="material-icons">keyboard_backspace</i></a>
+</div>
+@if (ViewBag.Message == "Sucesso")
+{
+    <p class="ok-login-msg">Produto adicionado com sucesso!</p>
+}
+@if (ViewBag.Message == "Erro")
+{
+    <p class="erro-login-msg">Erro ao adicionar produto</p>
+
+}
 <form asp-action="AdicionarProdutoEmEventoForm" method="post">
     <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
         <div class="form-horizontal">
@@ -41,7 +51,4 @@
     </div>
 </form>
 
-<div style="padding:0px 290px 0px 0px">
-    <a asp-controller="Home" asp-action="index"><i class="material-icons">keyboard_backspace</i></a>
-</div>
 

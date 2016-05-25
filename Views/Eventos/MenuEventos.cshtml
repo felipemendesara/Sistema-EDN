@@ -2,6 +2,49 @@
 <h1 style="color:rgb(184, 60, 47)">@Model.NomeEvento</h1>
 <hr />
 <div class="android-card-container mdl-grid">
+
+    @if (User.IsInRole("Admin"))
+    {
+        @if (Model.Status == true)
+        {
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                <div class="mdl-card__media" style="background-color:white">
+                    <img src="~/images/addprod.png" style="height:207px; width:213px;background-color:#FFFFFF">
+                </div>
+                <div class="mdl-card__title" style="padding:1px;">
+                    <h4 class="mdl-card__title-text">Create your own Android character</h4>
+                </div>
+
+                <div class="mdl-card__actions">
+                    <a asp-controller="Eventos" asp-action="AdicionarProdutoEmEventoForm" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+                        <b>ADICIONAR PRODUTO</b>
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </div>
+
+            </div>
+
+        }
+    }
+    @if (Model.Status == true)
+    {
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+            <div class="mdl-card__media" style="background-color:white">
+                <img src="~/images/cartt.jpg" style="height:207px; width:213px;background-color:#FFFFFF">
+            </div>
+            <div class="mdl-card__title" style="padding:1px;">
+                <h4 class="mdl-card__title-text">Create your own Android character</h4>
+            </div>
+
+            <div class="mdl-card__actions">
+                <a asp-controller="Produtos" asp-action="VenderProduto" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+                    <b>VENDER PRODUTO</b>
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </div>
+
+        </div>
+    }
     <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
         <div class="mdl-card__media" style="background-color:white">
             <img src="~/images/grafico.png" style="height:207px; width:213px;background-color:white">
@@ -12,30 +55,12 @@
         
         <div class="mdl-card__actions">
             <a asp-controller="Produtos" asp-action="Grafico" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
-                GRAFICO
+                <b> GRAFICO</b>
                 <i class="material-icons">chevron_right</i>
             </a>
         </div>
     </div>
-@if (Model.Status == true)
-{
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-        <div class="mdl-card__media" style="background-color:white">
-            <img src="~/images/cartt.jpg" style="height:207px; width:213px;background-color:#FFFFFF">
-        </div>
-        <div class="mdl-card__title" style="padding:1px;">
-            <h4 class="mdl-card__title-text">Create your own Android character</h4>
-        </div>
-    
-        <div class="mdl-card__actions">
-            <a asp-controller="Produtos" asp-action="VenderProduto" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
-                VENDER PRODUTOS
-                <i class="material-icons">chevron_right</i>
-            </a>
-        </div>
-      
-    </div>
-}
+
 @if (User.IsInRole("Admin"))
 {
     <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
@@ -47,36 +72,15 @@
         </div>
 
         <div class="mdl-card__actions">
-            <a asp-controller="CaixaEventos" asp-action="Index" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
-                CAIXA
-                <i class="material-icons">chevron_right</i>
-            </a>
+            <a asp-controller="Eventos" asp-action="Maps"  asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+                <b>
+                    MAPA</b>
+                    <i class="material-icons">chevron_right</i>
+</a>
         </div>
     </div>
 }
-@if (User.IsInRole("Admin"))
-{
-@if (Model.Status == true)
-{
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-        <div class="mdl-card__media" style="background-color:white">
-            <img src="~/images/addprod.png" style="height:207px; width:213px;background-color:#FFFFFF">
-        </div>
-        <div class="mdl-card__title" style="padding:1px;">
-            <h4 class="mdl-card__title-text">Create your own Android character</h4>
-        </div>
 
-        <div class="mdl-card__actions">
-            <a asp-controller="Eventos" asp-action="AdicionarProdutoEmEventoForm" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
-                ADICIONAR PRODUTO
-                <i class="material-icons">chevron_right</i>
-            </a>
-        </div>
-
-    </div>
-
-    }
-}
 </div>
 
 

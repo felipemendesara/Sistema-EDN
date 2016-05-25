@@ -43,6 +43,7 @@ namespace EDNEVENTOS.Controllers
                                          //ValorProduto = pe.Produto.ValorProduto,
                                          //Caixa = pe.Eventos.Caixa
                                      }).ToList();
+            
             return View(produtosPorEvento);
         }
         [HttpPost]
@@ -206,6 +207,7 @@ namespace EDNEVENTOS.Controllers
                                          NomeProduto = pe.Produto.NomeProduto,
                                          QuantidadeProduto = pe.Quantidade
                                      }).ToList();
+            ViewBag.idEvento = id;
             return View(produtosPorEvento);
         }
     }

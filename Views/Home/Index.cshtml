@@ -19,19 +19,15 @@
             }
         });
     }
-</script>   
+</script>
 
 @foreach (var item in Model)
 {
-
     @if (item.Status == true)
     {
         <div id="div-event-@item.IdEvento" class="demo-card-wide mdl-card mdl-shadow--2dp cardfesta" style="background-image:url(../Images/@item.ImagemProduto)">
-
-
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">
-
                     @if (item.DataEvento == DateTime.Today)
                     {
                         @Html.DisplayFor(modelItem => item.NomeEvento)
@@ -51,39 +47,33 @@
                         @Html.DisplayFor(modelItem => item.NomeEvento)
 
                     }
-
-
-
                 </h2>
             </div>
             <div class="mdl-card__supporting-text">
                 <b>Local:</b>@Html.DisplayFor(modelItem => item.LocalEvento)
                 <br>
-
-
                 <b>Data:</b> @Html.DisplayFor(modelItem => item.DataEvento) <br />
                 <b>Valor: R$ @Html.DisplayFor(modelItem => item.ValorEvento)</b>
+            </div>x'
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="http://localhost:53920/Home/Details/@item.IdEvento" target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
+                    <b>SITE</b>
+                </a>
+                <a asp-controller="Eventos" asp-action="MenuEventos" asp-route-id="@item.IdEvento" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
+                    <b>VER EVENTO</b>
+                </a>
             </div>
-
-  
-                <div class="mdl-card__actions mdl-card--border">
-                    <a href="http://www.edneventos.com.br/" target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
-                        <b>SITE</b>
-                    </a>
-                    <a asp-controller="Eventos" asp-action="MenuEventos" asp-route-id="@item.IdEvento" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
-                        <b>VER EVENTO</b>
-</a>
-
-                </div>
-@if (User.IsInRole("Admin")) { 
+            @if (User.IsInRole("Admin"))
+            {
                 <div class="mdl-card__menu">
                     <div class="col-md-offset-2 col-md-10">
-                       <button type="button"
-                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background:rgba(184, 60, 47, 0.75);color:black" onclick="finalizar(@item.IdEvento)"><b>Finalizar</b></button>
+                        <button type="button"
+                                class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="background:rgba(184, 60, 47, 0.75);color:black" onclick="finalizar(@item.IdEvento)">
+                            <b>Finalizar</b>
+                        </button>
                     </div>
                 </div>
-
-}
+            }
         </div>
 
     }

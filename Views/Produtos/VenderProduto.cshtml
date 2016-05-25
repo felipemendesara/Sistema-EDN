@@ -22,6 +22,9 @@
         });
     }
 </script>
+<div style="padding:0px 942px 0px 0px">
+    <a asp-controller="Eventos" asp-route-id="@ViewBag.idEvento" asp-action="MenuEventos"><i class="material-icons">keyboard_backspace</i></a>
+</div>
 <div style="padding 0px 0px 0px 0px">
     <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:259px">
         <div class="mdl-card__title">
@@ -46,6 +49,7 @@
     R$
   
 </div>*@
+
 <div class="android-more-section">
 
     <div class="android-card-container mdl-grid">
@@ -57,8 +61,8 @@
 
       
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                <div class="mdl-card__media" style="background-color:aliceblue">
-                    <img src="~/images/ImagemProdutos/@item.Produto.Imagem" style="height:207px;background-color:aliceblue">
+                <div class="mdl-card__media" style="background-color:white">
+                    <img src="~/images/ImagemProdutos/@item.Produto.Imagem" style="height:207px;background-color:white">
                 </div>
                 <div class="mdl-card__title">
                     <h4 class="mdl-card__title-text">Create your own Android character</h4>
@@ -92,3 +96,4 @@
         }
     </div>
 </div>
+

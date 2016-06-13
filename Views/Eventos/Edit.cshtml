@@ -3,10 +3,10 @@
 @{
     ViewData["Title"] = "Editar Evento";
 }
-
+<div style="padding:0px 974px 0px 0px">
+    <a asp-action="Index"><i class="material-icons">keyboard_backspace</i></a>
+</div>
 <form asp-action="Edit">
-
-
     <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
     <div class="mdl-card mdl-shadow--2dp" style="padding:20px;">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" hidden>
@@ -15,7 +15,21 @@
                 <label class="mdl-textfield__label" for="sample1">Nome do Evento</label>
                 <span asp-validation-for="IdEvento" class="text-danger" />
             </div>
-        </div><br />
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" hidden>
+            <div class="col-md-10">
+                <input asp-for="Caixa" class="mdl-textfield__input" type="text" />
+                <label class="mdl-textfield__label" for="sample1">Caixa</label>
+                <span asp-validation-for="Caixa" class="text-danger" />
+            </div>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" hidden>
+            <div class="col-md-10">
+                <input asp-for="Status" class="mdl-textfield__input" type="text" />
+                <label class="mdl-textfield__label" for="sample1">STTS</label>
+                <span asp-validation-for="Status" class="text-danger" />
+            </div>
+        </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-10">
                 <input asp-for="NomeEvento" class="mdl-textfield__input" type="text" />
@@ -56,7 +70,7 @@
                 <span asp-validation-for="BairroEvento" class="text-danger" />
             </div>
         </div><br />
-  
+
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
@@ -69,7 +83,7 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                
+
                 <input asp-for="ValorEvento" class="mdl-textfield__input" type="text" />
                 <label class="mdl-textfield__label" for="sample2">Valor do Evento</label>
                 <span asp-validation-for="ValorEvento" class="mdl-textfield__error">Apenas numeros!</span>
@@ -85,13 +99,20 @@
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <div class="col-md-10">
-                <input asp-for="DataEvento" class="mdl-textfield__input" type="datetime" placeholder="Data" style="width:385px; padding:20px 47px;" />
+                <input asp-for="DataEvento" class="mdl-textfield__input" type="date" placeholder="Data" style="width:385px; padding:20px 47px;" />
                 <span asp-validation-for="DataEvento" class="text-danger" />
             </div>
         </div><br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+            <div class="col-md-10">
+                <input asp-for="Hora" class="mdl-textfield__input" type="time" style="width:385px; padding:20px 47px;" />
+                <span asp-validation-for="Hora" class="text-danger" />
+            </div>
+        </div><br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Editar"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F"/>
+                <input type="submit" value="Editar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background-color:#B83C2F" />
             </div>
         </div>
         <br />
@@ -99,6 +120,4 @@
 </form>
 
 
-<div style="padding 0px 0px 0px 0px">
-    <a asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:95px;top:-50px;"><i class="material-icons" style="color:aliceblue">reply</i>Voltar</a>
-</div>
+

@@ -10,7 +10,7 @@ namespace EDNEVENTOS.Services
 {
     public class ServicoEmail
     {
-        public static Task EnviarEmail(string email,string assunto,string mensagem, IApplicationEnvironment appEnvironment,string usuario,string senha)
+        public static Task EnviarEmail(string email, string assunto, string mensagem, IApplicationEnvironment appEnvironment, string usuario, string senha)
         {
             var caminhoTemplate = "/Templates/ServicosEmail.cshtml";
             var conteudoTemplate = System.IO.File.ReadAllText(appEnvironment.ApplicationBasePath + caminhoTemplate);
@@ -21,11 +21,11 @@ namespace EDNEVENTOS.Services
             {
                 var minhaMensagem = new SendGridMessage();
                 minhaMensagem.AddTo(email);
-                minhaMensagem.From = new System.Net.Mail.MailAddress("email@gmail.com", "EDN EVENTOS");
+                minhaMensagem.From = new System.Net.Mail.MailAddress("eventosednerro@gmail.com", "EDN EVENTOS");
                 minhaMensagem.Subject = assunto;
                 minhaMensagem.Html = conteudoTemplate;
 
-                var credenciais = new NetworkCredential("userSendGrid", "passSend");
+                var credenciais = new NetworkCredential("edneventoserro", "Felipe007.");
                 var transporteWeb = new Web(credenciais);
                 return transporteWeb.DeliverAsync(minhaMensagem);
             }

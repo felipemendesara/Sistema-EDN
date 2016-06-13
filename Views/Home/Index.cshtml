@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Inicio";
 }
+<link rel="stylesheet" href="~/css/sweetalert.css">
+<script src="~/js/sweetalert.min.js"></script>
 <script type="text/javascript">
     function finalizar(idEvento) {
         console.log(idEvento);
@@ -12,7 +14,7 @@
             //contentType: "application/json",
             data: "IdEvento="+idEvento, //JSON.stringify({ IdEvento: idEvento }),
             success: function (data) {
-                alert(data.mensagem);
+                swal({ title: "Evento finalizado com sucesso!", type: "success", confirmButtonColor: "#DD6B55", confirmButtonText: "OK", });
                 if (data.codigo == 0) {
                     $("#div-event-" + idEvento).remove();
                 }
@@ -54,13 +56,13 @@
                 <br>
                 <b>Data:</b> @Html.DisplayFor(modelItem => item.DataEvento) <br />
                 <b>Valor: R$ @Html.DisplayFor(modelItem => item.ValorEvento)</b>
-            </div>x'
+            </div>
             <div class="mdl-card__actions mdl-card--border">
                 <a href="http://eventosedn.azurewebsites.net/Home/Details/@item.IdEvento" target="_blank" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
-                    <b>SITE</b>
+                    <i class="material-icons">public</i>
                 </a>
                 <a asp-controller="Eventos" asp-action="MenuEventos" asp-route-id="@item.IdEvento" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="eventobtn1">
-                    <b>VER EVENTO</b>
+                    <i class="material-icons">visibility</i>
                 </a>
             </div>
             @if (User.IsInRole("Admin"))
@@ -75,6 +77,5 @@
                 </div>
             }
         </div>
-
     }
 }

@@ -55,6 +55,13 @@ namespace EDNEVENTOS.Controllers
 
             return View("AdicionarProdutoEmEventoForm");
          }
+        [Authorize]
+        // GET: Eventos/Create
+        public IActionResult GraficosAtivosInativos()
+        {
+            return View(_context.Eventos.OrderBy(model => model.Status).ToList());
+        }
+
 
         [HttpPost]
         public IActionResult AdicionarProdutoEmEventoForm(ProdutoEmEvento prod)

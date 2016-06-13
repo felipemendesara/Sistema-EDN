@@ -47,6 +47,8 @@ namespace EDNEVENTOS.Models
         [Display(Name = "Caixa do evento")]
         public decimal Caixa { get; set; }
         //public ICollection <ProdutoEmEvento> ProdutoEmEvento{ get; set; }
+        public TimeSpan Hora { get; set; }
+
 
     }
 }

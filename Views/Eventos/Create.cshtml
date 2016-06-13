@@ -4,34 +4,34 @@
     ViewData["Title"] = "Criar Evento";
 }
 
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style>
     body {
-  display: flex;
-}
+        display: flex;
+    }
 
-.file_input_div {
-  margin: auto;
-  width: 250px;
-  height: 40px;
-}
+    .file_input_div {
+        margin: auto;
+        width: 250px;
+        height: 40px;
+    }
 
-.file_input {
-  float: left;
-}
+    .file_input {
+        float: left;
+    }
 
-#file_input_text_div {
-  width: 200px;
-  margin-top: -8px;
-  margin-left: 5px;
-}
+    #file_input_text_div {
+        width: 200px;
+        margin-top: -8px;
+        margin-left: 5px;
+    }
 
-.none {
-  display: none;
-}
+    .none {
+        display: none;
+    }
 </style>
 
 <script type="text/javascript">
@@ -117,13 +117,15 @@
     }
     function mreais(v) {
         v = v.replace(/\D/g, "")						//Remove tudo o que não é dígito
-        v = v.replace(/(\d{2})$/, ",$1") 			//Coloca a virgula
+        v = v.replace(/(\d{2})$/, ".$1") 			//Coloca a virgula
         v = v.replace(/(\d+)(\d{3},\d{2})$/g, "$1.$2") 	//Coloca o primeiro ponto
         return v
     }
 </script>
 
-
+<div style="padding:0px 974px 0px 0px">
+    <a asp-action="Index"><i class="material-icons">keyboard_backspace</i></a>
+</div>
 <form asp-action="Create">
 
 
@@ -143,7 +145,7 @@
                     <span asp-validation-for="CepEvento" class="mdl-textfield__error">Apenas numeros!</span>
                 </div>
             </div>
-         
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
@@ -191,14 +193,21 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
-                    <input asp-for="DataEvento" class="mdl-textfield__input" type="datetime" onkeypress="mascara(this, '##/##/####')" maxlength="10" placeholder="Data"  />
+                    <input asp-for="DataEvento" class="mdl-textfield__input" type="date" placeholder="Data" />
                     <span asp-validation-for="DataEvento" class="text-danger" />
                 </div>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
                 <div class="col-md-10">
-                    <input asp-for="Caixa" class="mdl-textfield__input"  onkeypress="valor(this,mreais)" type="text" maxlength="10"  placeholder="Caixa" />
+                    <input asp-for="Hora" class="mdl-textfield__input" type="time" placeholder="Data" />
+                    <span asp-validation-for="Hora" class="text-danger" />
+                </div>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                <div class="col-md-10">
+                    <input asp-for="Caixa" class="mdl-textfield__input" onkeypress="valor(this,mreais)" type="text" maxlength="10" placeholder="Caixa" />
                     <span asp-validation-for="Caixa" class="text-danger" />
                 </div>
             </div>
@@ -213,17 +222,12 @@
                 </div>
             </div>
         </div>
-        <div>            
-            
-            </div>
+        <div>
+
         </div>
+    </div>
 
 </form>
-
-<div style="padding 0px 0px 0px 0px">
-    <a asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:95px;top:-50px;"><i class="material-icons" style="color:aliceblue">reply</i>Voltar</a>
-</div>
-
 <script>
     function mascaraData(campo, e) {
         var kC = (document.all) ? event.keyCode : e.keyCode;

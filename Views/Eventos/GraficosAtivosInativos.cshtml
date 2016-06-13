@@ -1,0 +1,68 @@
+@model IEnumerable<EDNEVENTOS.Models.Eventos>
+
+@{
+    ViewData["Title"] = "Grafico Ativo Inativo";
+    int ativo = 0;
+    int inativo = 0;
+}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+@foreach (var item in Model)
+{
+
+    if (item.Status == true)
+    {
+        ativo += 1;
+    }
+    if (item.Status == false)
+    {
+        inativo += 1;
+    }
+}
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Eventos Ativos/Inativos'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Porcentagem',
+                colorByPoint: true,
+                data: [{
+                    name: 'Ativos',
+                    y: @ativo,
+                }, {
+                    name: 'Inativos',
+                    y: @inativo,
+                    sliced: true,
+                    selected: true
+                },]
+            }]
+        });
+    });
+</script>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>

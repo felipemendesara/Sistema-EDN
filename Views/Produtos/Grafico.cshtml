@@ -1,54 +1,71 @@
 @model IEnumerable<EDNEVENTOS.Models.RegistroRelatorioProdutoPorEvento>
 
 @{
-    ViewData["Title"] = "Detalhes dos Produtos";
+    ViewData["Title"] = "Grafico Quantidade";
 }
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Quantidade de produtos'
+            },
+
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Quantidade unitaria de produto'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Quantidade de produtos: <b>{point.y:.1f} unit</b>'
+            },
+            series: [{
+                name: 'Population',
+                data: [
+                    @foreach (var item in Model)
+                    {
+                    <text>
+                    ['@item.NomeProduto',@item.QuantidadeProduto],
+                  </text>
+                  }
+                ],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // one decimal
+                    y: 10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                    }
+            }]
+            });
+    });
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <div style="padding:0px 942px 0px 0px">
     <a asp-controller="Eventos" asp-route-id=@ViewBag.idEvento asp-action="MenuEventos"><i class="material-icons">keyboard_backspace</i></a>
 </div>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script> <!-- JS para os graficos-->
-<script type="text/javascript"
-        src="https://www.google.com/jsapi?autoload={
-            'modules':[{
-              'name':'visualization',
-              'version':'1',
-              'packages':['corechart']
-            }]
-          }"></script>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script><!--JS GRAFICO-->
-<script type="text/javascript">
-    google.load("visualization", "1.1", { packages: ["bar"] });
-    google.setOnLoadCallback(drawChartA);
-
-    function drawChartA() {
-        var concas = "'"
-        var data = google.visualization.arrayToDataTable([
-          ['Itens', 'Quantidade'],
-         @foreach (var item in Model)
-         {
-          <text>
-          ['@item.NomeProduto', @item.QuantidadeProduto],
-          </text>
-         }
-
-        ]);
-
-        var options = {
-            chart: {
-                title: 'Quantidade de produtos',
-                subtitle: '',
-            }
-        };
-
-        var chartA = new google.charts.Bar(document.getElementById('eventoA'));
-        chartA.draw(data, options);
-    }
-</script>
-
-
-<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" style="padding:30px;">
-    <div id="eventoA" style="width: 900px; height: 500px;"></div>
-</div>
+<div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div>

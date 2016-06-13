@@ -1,0 +1,44 @@
+@model IEnumerable<EDNEVENTOS.Models.ProdutoEmEvento>
+
+@{
+    ViewData["Title"] = "Relatorio Produtos";
+}
+<div style="padding:0px 942px 0px 0px">
+    <a asp-controller="Eventos" asp-route-id=@ViewBag.idEvento asp-action="MenuEventos"><i class="material-icons">keyboard_backspace</i></a>
+</div>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
+    <tr>
+        <th>
+            Nome do Evento
+        </th>
+        <th>
+            Relatorio
+        </th>
+
+        <th>
+            Categoria
+        </th>
+        <th>
+            Valor do Produto
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eventos.NomeEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.CategoriaProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.NomeProduto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.ValorProduto)
+            </td>
+        </tr>
+    }
+</table>

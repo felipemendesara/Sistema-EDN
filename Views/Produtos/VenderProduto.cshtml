@@ -1,99 +1,285 @@
-@model IEnumerable<EDNEVENTOS.Models.ProdutoEmEvento>
+﻿@model IEnumerable<EDNEVENTOS.Models.ProdutoEmEvento>
 
 @{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Vender produtos";
+    Layout = "";
 }
-<script type="text/javascript">
-    function vender(idProduto) {
-        console.log(idProduto);
-        var qtde = 1;
-        // mostra um inputbox
 
-        $.ajax({
-            type: "POST",
-            //datatype: 'json',
-            url: '',
-            //contentType: "application/json",
-            data: "IdEvento=@ViewBag.idEvento&Quantidade=" + qtde + "&IdProduto=" + idProduto, //JSON.stringify({ IdEvento: idEvento }),
-            success: function (data) {
-                alert(data.mensagem);
-                location.reload();
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EDN</title>
+    <link rel="icon" href="~/images/favicon.ico" type="image/png">
+    <environment names="Development">
+        @*<link rel="stylesheet" href="~/css/material.css" />
+            <link rel="stylesheet" href="~/css/materialize.css" />*@
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="../img/android-desktop.png">
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <link rel="apple-touch-icon-precomposed" href="../img/ios-desktop.png">
+
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <link rel="shortcut icon" href="../img/favicon.png">
+
+        <title>EDN Eventos - Painel do Administrador</title>
+
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="~/css/material.min.css">
+        <link rel="stylesheet" href="~/css/edneventos.css">
+        <link rel="stylesheet" href="~/css/sweetalert.css">
+        <link href="~/css/snackbarlight.css" rel="stylesheet">
+        <script src="~/js/snackbarlight.js"></script>
+        <script src="~/js/material.js"></script>
+        <script src="~/js/material.min.js"></script>
+        <script src="~/js/sweetalert.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+        <script src="~/js/cep.js"></script>
+
+
+
+    </environment>
+    <environment names="Staging,Production">
+        @*<link rel="stylesheet" href="~/css/material.css" />
+            <link rel="stylesheet" href="~/css/materialize.css" />*@
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="../img/android-desktop.png">
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <link rel="apple-touch-icon-precomposed" href="../img/ios-desktop.png">
+        <link rel="stylesheet" href="~/css/sweetalert.css">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+        <script src="~/js/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <link rel="shortcut icon" href="../img/favicon.png">
+
+        <title>EDN Eventos - Painel do Administrador</title>
+        <link href="~/css/snackbarlight.css" rel="stylesheet">
+        <script src="~/js/snackbarlight.js"></script>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="~/css/material.min.css">
+        <link rel="stylesheet" href="~/css/notiny.min.css">
+        <link rel="stylesheet" href="~/css/edneventos.css">
+        <link rel="icon" href="~/images/favicon.ico" type="image/png">
+        <script src="~/js/material.js"></script>
+        <script src="~/js/material.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+        <script src="~/js/cep.js"></script>
+        <script src="~/js/notiny.min.js"></script>
+
+    </environment>
+</head>
+<body>
+    <script>
+        function myFunction() {
+            var txt;
+            var r = confirm("Press a button!");
+            if (r == true) {
+                txt = "You pressed OK!";
+            } else {
+                txt = "You pressed Cancel!";
             }
-        });
-    }
-</script>
-<div style="padding:0px 942px 0px 0px">
-    <a asp-controller="Eventos" asp-route-id="@ViewBag.idEvento" asp-action="MenuEventos"><i class="material-icons">keyboard_backspace</i></a>
-</div>
-<div style="padding 0px 0px 0px 0px">
-    <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:259px">
-        <div class="mdl-card__title">
-            <h2 style="color:green">
-                <div style="color:#B83C2F"><b>CAIXA<hr /></div> R$</b> @foreach (var item in Model.Take(1))
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+    <script>
+        function batata() {
+            @foreach (var item in Model.Take(1))
+            {
+            <text>
+            new Snackbar("CAIXA: R$ @item.Eventos.Caixa");
+            </text>
+        }
+        }
+    </script>
+
+
+
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">EDN Eventos - Painel Administrativo</span>
+            </div>
+        </header>
+        @{
+            var campoTitulo = "";
+
+            if (User.IsInRole("Admin"))
+            {
+                campoTitulo = "Administrador";
+            }
+            else {
+                campoTitulo = "Usu�CArio";
+            }
+        }
+        <!-- Menu Lateral -->
+        <div class="mdl-layout__drawer">
+            <header class="drawer-user-area">
+                @if (User.IsInRole("Admin"))
                 {
-                    <b>  @item.Eventos.Caixa</b>
-
-                }
-            </h2>
-        </div>
-
-
-        <div class="mdl-card__menu">
-            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">share</i>
-            </button>
-        </div>
-    </div>
-</div>
-@*<div style="color:green;font-size:60px">
-    R$
-  
-</div>*@
-
-<div class="android-more-section">
-
-    <div class="android-card-container mdl-grid">
-   
-  
-                <br /><br />
-        @foreach (var item in Model)
-        {
-
-      
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                <div class="mdl-card__media" style="background-color:white">
-                    <img src="~/images/ImagemProdutos/@item.Produto.Imagem" style="height:207px;background-color:white">
-                </div>
-                <div class="mdl-card__title">
-                    <h4 class="mdl-card__title-text">Create your own Android character</h4>
-                </div>
-
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">@item.Produto.NomeProduto (@item.Quantidade)<br><div style="color:greenyellow">R$ @item.Produto.ValorProduto</div></span>
-                </div>
-                @if (item.Quantidade > 0)
-                {
-                    <div class="mdl-card__actions">
-                        <button type="button"
-                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" onclick="vender(@item.Produto.IdProduto)">
-                            VENDER
-                        </button>
-
-                    </div>
+                    <img src="~/images/login.jpg" class="user-avatar">
                 }
                 else
                 {
-                    <div class="mdl-card__actions">
-                        <button type="button"
-                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" disabled>
-                            <b>PRODUTO ESGOTADO</b>
-                        </button>
-
-                    </div>
+                    <img src="~/images/loginLucas.jpg" class="user-avatar">
 
                 }
+                <h6 class="mdl-typography--title user-name">@campoTitulo</h6>
+                <div class="demo-avatar-dropdown">
+                    <div>
+                        <span>@User.Identity.Name</span>
+                    </div>
+                    <div class="mdl-layout-spacer"></div>
+                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons" role="presentation">arrow_drop_down</i>
+                        <span class="visuallyhidden">Op??es</span>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                        <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+                            <li>
+                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="font-size: 19px;width: 124px;background:#B83C2F"><i class="material-icons menu-icons">settings_power</i>Sair</button>
+                            </li>
+
+                        </form>
+                    </ul>
+
+
+                </div>
+            </header>
+            <nav class="mdl-navigation" id="menu">
+
+                <a asp-controller="Home" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">home</i><b>Inicio</b></a>
+                <a asp-controller="Eventos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event</i><b>Eventos</b></a>
+                <a asp-controller="Produtos" asp-action="Index" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">shopping_cart</i><b>Produtos</b></a>
+
+                <a asp-controller="Eventos" asp-action="GraficoAtivoInativo" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">pie_chart</i><b>Status Eventos</b></a>
+                <a asp-controller="Eventos" asp-action="EventoInativo" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">event_busy</i><b>Eventos Inativos</b></a>
+                <hr />
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Account" asp-action="Register" class="mdl-navigation__link menu-link"><i class="material-icons menu-icons">person_add</i><b>Registrar Usu�rios</b></a>
+                }
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-right">
+                    <li class="mdl-menu__item">Some Action</li>
+                    <li class="mdl-menu__item">Another Action</li>
+                    <li disabled class="mdl-menu__item">Disabled Action</li>
+                    <li class="mdl-menu__item">Yet Another Action</li>
+                </ul>
+
+            </nav>
+        </div>
+
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="page-content" id="conteudo">
+                <script type="text/javascript">
+                    function vender(idProduto) {
+                        console.log(idProduto);
+                        var qtde = 1;
+                        // mostra um inputbox
+
+                        $.ajax({
+                            type: "POST",
+                            //datatype: 'json',
+                            url: '',
+                            //contentType: "application/json",
+                            data: "IdEvento=@ViewBag.idEvento&Quantidade=" + qtde + "&IdProduto=" + idProduto, //JSON.stringify({ IdEvento: idEvento }),
+                            success: function (data) {
+                                swal({ title: "Produto vendido com sucesso!", type: "success", confirmButtonColor: "#DD6B55", confirmButtonText: "OK", });
+
+
+                                setTimeout("location.reload(true);", 2000);
+                            }
+                        });
+                    }
+                </script>
+                <div style="padding:0px 942px 0px 0px">
+                    <a asp-controller="Eventos" asp-route-id="@ViewBag.idEvento" asp-action="MenuEventos"><i class="material-icons">keyboard_backspace</i></a>
+                    <a href="#" onclick="batata()"><i class="material-icons">attach_money</i></a>
+                </div>
+
+                <div class="android-more-section">
+
+                    <div class="android-card-container mdl-grid">
+
+
+                        <br /><br />
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                                <div class="mdl-card__media" style="background-color:white">
+                                    <img src="~/images/ImagemProdutos/@item.Produto.Imagem" style="height:207px;background-color:white">
+                                </div>
+                                <div class="mdl-card__title">
+                                    <h4 class="mdl-card__title-text">Create your own Android character</h4>
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+                                    <span class="mdl-typography--font-light mdl-typography--subhead">@item.Produto.NomeProduto (@item.Quantidade)<br><div style="color:greenyellow">R$ @item.Produto.ValorProduto</div></span>
+                                </div>
+                                @if (item.Quantidade > 0)
+                {
+                                    <div class="mdl-card__actions">
+                                        <button type="button"
+                                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" style="color:rgb(184, 60, 47)" onclick="vender(@item.Produto.IdProduto)">
+                                            <b><i class="material-icons">monetization_on</i></b>
+                                        </button>
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="mdl-card__actions">
+                                        <button type="button"
+                                                class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" disabled>
+                                            <b>PRODUTO ESGOTADO</b>
+                                        </button>
+
+                                    </div>
+
+                                }
+                            </div>
+                        }
+                    </div>
+
+
+                </div>
+
             </div>
-        }
-    </div>
-</div>
+        </main>
+</body>
+
+
+
 

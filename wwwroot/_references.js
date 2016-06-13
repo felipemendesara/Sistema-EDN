@@ -8,6 +8,7 @@
 /// <reference path="js/morris-data.js" />
 /// <reference path="js/raphael.min.js" />
 /// <reference path="js/site.js" />
+/// <reference path="js/sweetalert.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
 /// <reference path="lib/jquery-validation/dist/jquery.validate.js" />

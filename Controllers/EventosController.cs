@@ -61,7 +61,12 @@ namespace EDNEVENTOS.Controllers
         {
             return View(_context.Eventos.OrderBy(model => model.Status).ToList());
         }
-
+        [Authorize]
+        // GET: Eventos/Create
+        public IActionResult GraficoCaixas()
+        {
+            return View(_context.Eventos.OrderBy(model => model.Status).ToList());
+        }
 
         [HttpPost]
         public IActionResult AdicionarProdutoEmEventoForm(ProdutoEmEvento prod)

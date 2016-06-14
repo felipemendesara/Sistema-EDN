@@ -1,4 +1,7 @@
 ﻿@model EDNEVENTOS.Models.Eventos
+@{
+    ViewData["Title"] = "Módulos";
+}
 <h1 style="color:rgb(184, 60, 47)">@Model.NomeEvento</h1>
 <hr />
 <div class="android-card-container mdl-grid">
@@ -12,7 +15,7 @@
                     <img src="~/images/addprod.png" style="height:207px; width:213px;background-color:#FFFFFF">
                 </div>
                 <div class="mdl-card__title" style="padding:1px;">
-                    <h4 class="mdl-card__title-text">Create your own Android character</h4>
+                    <h4 class="mdl-card__title-text">EDN <br />EVENTOS</h4>
                 </div>
 
                 <div class="mdl-card__actions">
@@ -33,7 +36,7 @@
                 <img src="~/images/cartt.jpg" style="height:207px; width:213px;background-color:#FFFFFF">
             </div>
             <div class="mdl-card__title" style="padding:1px;">
-                <h4 class="mdl-card__title-text">Create your own Android character</h4>
+                <h4 class="mdl-card__title-text">EDN <br />EVENTOS</h4>
             </div>
 
             <div class="mdl-card__actions">
@@ -50,12 +53,12 @@
             <img src="~/images/grafico.png" style="height:207px; width:213px;background-color:white">
         </div>
         <div class="mdl-card__title" style="padding:1px;">
-            <h4 class="mdl-card__title-text">Create your own Android character</h4>
+            <h4 class="mdl-card__title-text">EDN <br />EVENTOS</h4>
         </div>
         
         <div class="mdl-card__actions">
             <a asp-controller="Produtos" asp-action="Grafico" asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
-                <b> GRAFICO</b>
+                <b> GRÁFICO</b>
                 <i class="material-icons">chevron_right</i>
             </a>
         </div>
@@ -68,12 +71,12 @@
             <img src="~/images/money.png" style="height:207px; width:213px;background-color:#FFFFFF">
         </div>
         <div class="mdl-card__title" style="padding:1px;">
-            <h4 class="mdl-card__title-text">Create your own Android character</h4>
+            <h4 class="mdl-card__title-text">EDN <br />EVENTOS</h4>
         </div>
         <div class="mdl-card__actions">
             <a asp-controller="Produtos" asp-action="RelatorioProdutos"  asp-route-id="@Model.IdEvento" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
                 <b>
-                    RELATORIO</b>
+                    RELATÓRIO</b>
                     <i class="material-icons">chevron_right</i>
 </a>
         </div>

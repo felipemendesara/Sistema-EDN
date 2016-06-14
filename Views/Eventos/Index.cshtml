@@ -13,6 +13,12 @@
     <p class="erro-login-msg">Erro ao cadastrar evento</p>
 
 }
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-457px"><i class="material-icons" style="color:aliceblue">add</i></a>
+    </p>
+}
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tabela-produtos">
     <tr>
         <th>
@@ -128,9 +134,3 @@
     }
 </table>
 <br />
-@if (User.IsInRole("Admin"))
-{
-<p>
-    <a asp-action="Create" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" style="background:#B83C2F; right:-457px"><i class="material-icons" style="color:aliceblue">add</i></a>
-</p>
-}
